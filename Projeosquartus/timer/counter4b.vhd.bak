@@ -19,7 +19,6 @@ architecture behave of counter4b is
 	signal aux: integer range 0 to 9 := 0;
 	signal n: std_logic_vector(3 downto 0);
 	begin
-	aux <= 0;
 	process(clk, rst)
 	begin
 		if rst = '1' then
