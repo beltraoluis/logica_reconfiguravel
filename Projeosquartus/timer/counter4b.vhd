@@ -1,6 +1,6 @@
--- André Luiz Rodrigues dos Santos
+-- AndrÃ© Luiz Rodrigues dos Santos
 -- RA1500759-UTFPR
--- Luís Henrique Beltrão Santana
+-- LuÃ­s Henrique BeltrÃ£o Santana
 -- RA906867-UTFPR
 -- 20190404
 
@@ -18,12 +18,12 @@ end entity;
 architecture behave of counter4b is
 	signal aux: integer range 0 to 9 := 0;
 	signal n: std_logic_vector(3 downto 0);
-begin
-	aux <= 0;
+	begin
 	process(clk, rst)
 	begin
 		if rst = '1' then
 			aux <= 0;
+			carry <= '0';
 		elsif clk' event and clk = '1' and  en = '1' then
 			if aux = 9 then
 				aux <= 0;

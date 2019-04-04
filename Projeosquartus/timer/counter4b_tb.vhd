@@ -33,135 +33,131 @@ architecture test of counter4b_tb is
 		);
 	process
 	begin
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --1
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --2
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --3
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --4
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --5
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --6
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --7
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --8
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --9
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
-		clock <= '1';
-		reset <= '0';
-		wait for 50 ns; --10
-		clock <= '0';
-		reset <= '0';
-		wait for 50 ns;
-		clock <= '1';
-		reset <= '0';
-		wait for 50 ns; --11
-		clock <= '0';
-		reset <= '0';
-		wait for 50 ns;
-		clock <= '1';
-		reset <= '0';
-		wait for 50 ns; --12
-		clock <= '0';
-		reset <= '0';
-		wait for 50 ns;
-		clock <= '1';
-		reset <= '0';
-		wait for 50 ns; --13
-		clock <= '0';
-		reset <= '0';
-		wait for 50 ns;
-		clock <= '1';
-		reset <= '0';
-		wait for 50 ns; --14
-		clock <= '0';
-		reset <= '0';
-		wait for 50 ns;
-		clock <= '1';
-		reset <= '0';
-		wait for 50 ns; --15
-		clock <= '0';
-		reset <= '0';
-		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --0
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --1
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '0';
 		reset <= '1';
 		wait for 50 ns; --0
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --1
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --2
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --3
+		enable <= '0';
 		clock <= '0';
 		reset <= '0';
 		wait for 50 ns;
+		enable <= '1';
 		clock <= '1';
 		reset <= '0';
 		wait for 50 ns; --4
