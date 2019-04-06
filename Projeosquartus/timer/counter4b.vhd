@@ -21,6 +21,7 @@ architecture behave of counter4b is
 	begin
 	process(clk, rst)
 	begin
+		carry <= '0';
 		if rst = '1' then
 			aux <= 0;
 			carry <= '0';

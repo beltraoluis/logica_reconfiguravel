@@ -126,7 +126,7 @@ architecture test of counter4b_tb is
 		reset <= '0';
 		wait for 50 ns;
 		enable <= '1';
-		clock <= '0';
+		clock <= '1';
 		reset <= '1';
 		wait for 50 ns; --0
 		enable <= '0';
