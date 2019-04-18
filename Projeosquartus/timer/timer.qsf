@@ -54,7 +54,49 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_N2 -to clk
+set_location_assignment PIN_N25 -to en
+set_location_assignment PIN_U1 -to test
+set_location_assignment PIN_AD12 -to counter_test0[3]
+set_location_assignment PIN_AE12 -to counter_test0[2]
+set_location_assignment PIN_AE13 -to counter_test0[1]
+set_location_assignment PIN_AF13 -to counter_test0[0]
+set_location_assignment PIN_AE22 -to divisor_test
+set_location_assignment PIN_Y24 -to o_seg_un[6]
+set_location_assignment PIN_AB25 -to o_seg_un[5]
+set_location_assignment PIN_AB26 -to o_seg_un[4]
+set_location_assignment PIN_AC26 -to o_seg_un[3]
+set_location_assignment PIN_AC25 -to o_seg_un[2]
+set_location_assignment PIN_V22 -to o_seg_un[1]
+set_location_assignment PIN_AB23 -to o_seg_un[0]
+set_location_assignment PIN_W24 -to o_seg_dez[6]
+set_location_assignment PIN_U22 -to o_seg_dez[5]
+set_location_assignment PIN_Y25 -to o_seg_dez[4]
+set_location_assignment PIN_Y26 -to o_seg_dez[3]
+set_location_assignment PIN_AA26 -to o_seg_dez[2]
+set_location_assignment PIN_AA25 -to o_seg_dez[1]
+set_location_assignment PIN_Y23 -to o_seg_dez[0]
+set_location_assignment PIN_V13 -to o_cent_un[6]
+set_location_assignment PIN_V14 -to o_cent_un[5]
+set_location_assignment PIN_AE11 -to o_cent_un[4]
+set_location_assignment PIN_AD11 -to o_cent_un[3]
+set_location_assignment PIN_AC12 -to o_cent_un[2]
+set_location_assignment PIN_AB12 -to o_cent_un[1]
+set_location_assignment PIN_AF10 -to o_cent_un[0]
+set_location_assignment PIN_AB24 -to o_cent_dez[6]
+set_location_assignment PIN_AA23 -to o_cent_dez[5]
+set_location_assignment PIN_AA24 -to o_cent_dez[4]
+set_location_assignment PIN_Y22 -to o_cent_dez[3]
+set_location_assignment PIN_W21 -to o_cent_dez[2]
+set_location_assignment PIN_V21 -to o_cent_dez[1]
+set_location_assignment PIN_V20 -to o_cent_dez[0]
+set_global_assignment -name VHDL_FILE btn_controller.vhd
+set_global_assignment -name VHDL_FILE and_9.vhd
+set_global_assignment -name VHDL_FILE and_6.vhd
+set_global_assignment -name VHDL_FILE divisor.vhd
 set_global_assignment -name VHDL_FILE timer.vhd
 set_global_assignment -name VHDL_FILE counter4b.vhd
 set_global_assignment -name VHDL_FILE bcd_7seg.vhd
+set_location_assignment PIN_P23 -to btn_1
+set_location_assignment PIN_W26 -to btn_2
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

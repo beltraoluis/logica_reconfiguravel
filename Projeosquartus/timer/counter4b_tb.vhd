@@ -14,18 +14,18 @@ architecture test of counter4b_tb is
 	component counter4b
 		port(
 		clk, rst, en: in std_logic;
-		o0, o1, o2, o3, carry: out std_logic
+		o0, o1, o2, o3: out std_logic
 	);
 	end component;
 	
 	signal clock, reset, enable: std_logic;
-	signal so0, so1, so2, so3, crr: std_logic;
+	signal so0, so1, so2, so3: std_logic;
 	begin
 		dect: counter4b port map(
 			clk => clock,
 			rst => reset,
 			en =>  enable,
-			carry => crr,
+		
 			o0 => so0,
 			o1 => so1,
 			o2 => so2,
