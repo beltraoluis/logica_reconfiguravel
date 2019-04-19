@@ -1,5 +1,0 @@
-|aula4
-i => o.DATAIN
-o <= i.DB_MAX_OUTPUT_PORT_TYPE
-
-
