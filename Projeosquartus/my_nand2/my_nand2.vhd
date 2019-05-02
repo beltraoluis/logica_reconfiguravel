@@ -1,4 +1,5 @@
--- Luis Henrique Beltrao Santana
+-- Andre Luiz Rodrigues dos Santos RA1500759
+-- Luis Henrique Beltrao Santana RA906867
 -- 20190314
 
 library ieee;
