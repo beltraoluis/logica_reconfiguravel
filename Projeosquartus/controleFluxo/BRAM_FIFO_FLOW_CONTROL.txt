@@ -1,0 +1,82 @@
+						BlockRAM, FIFO E Controle de fluxo
+=========================================================================================================================
+
+BIBLIOGRAFIA: VOLNEI PEDRONI, DOUGLAS PERRY
+
+
+1) OBJETIVO
+_ Exercitar o controle de fluxo entre elementos de lógica reconfigurável.
+_ A BRAM será preenchida com valores crescentes e consecutivos de 0 a 1023
+_ A escrira da BRAM para a FIFO se dá a uma velocidade 5 vezez maior que a leitura da FIFO e escrita na segunda BRAM 
+
+		 ----------                ----------                ----------
+		| BRAM     |    8 bits    | FIFO     |    8 bits    | BRAM     |
+		| 1024 x 8 |------|-------| 512      |------|-------| 1024 x 8 |
+		|          |		      | BYTES    |		        |          |
+         ----------                ----------                ----------
+
+
+Diagramas de estado simplificados
+a) Primeira estratégia                   ---------------------<---------------------
+		                                |                                           |
+		 ----------                ----------  CNT>=75%/    ----------  CNT<50%/    |
+WRITE   |          |              |          |  WE = 0     |          |  WE = 1     |     
+        | RESET    |------------->| WR_FIFO  |------------>| WR_WAIT  |------------>
+        |          |		      |          |--           |          |--     
+         ----------                ----------   |CNT<75%/   ----------   |CNT>=50%/
+                                           |    | WE = 1            |    | WE = 0
+WR_speed / RD_speed = 5                     <---                     <---   	
+	 
+                                         ---------------------<---------------------
+		                                |                                           |
+		 ----------                ----------               ----------              |
+READ    |          |  CNT /= 0    |          |  CNT = 0    |          |  CNT/=0     |     
+		| RESET    |------------->| RD_FIFO  |------------>| RD_WAIT  |------------>
+		|          |--     	      |          |--           |          |--     
+         ----------   |CNT=0       ----------   |CNT        ----------   |CNT=0
+		              |                    |    |/=0          |     |    | 
+		              |                     <---              |      <---   
+                       --------------->----------->-----------
+
+b) Segunda estratégia
+
+  A operação de WRITE é contínua e depende apenas de um sinal WE.
+
+  O bloco READ vai gerar um sinal BP (back pressure):
+
+_ vale 0 qdo CNT =0
+_ vai a 1 se CNT >= 75%, mas só volta a 0 se CNT < 50%
+   
+                                         ---------------------<---------------------
+		                                |                                           |
+		 ----------                ----------               ----------              |
+WRITE   |          |              |          |  WE = 0     |          |  WE = 1     |     
+        | RESET    |------------->| WR_FIFO  |------------>| WR_WAIT  |------------>
+        |          |		      |          |--           |          |--     
+         ----------                ----------   |WE = 1     ----------   |WE = 0
+                                           |    |                   |    |
+WR_speed / RD_speed = 5                     <---                     <---   	
+	 
+                                         ---------------------<---------------------
+		                                |                                           |
+		 ----------                ----------               ----------              |
+READ    |          |  CNT /= 0    |          |  CNT = 0    |          |  CNT/=0     |     
+		| RESET    |------------->| RD_FIFO  |------------>| RD_WAIT  |------------>
+		|          |--     	      |          |--           |          |--     
+         ----------   |CNT=0       ----------   |CNT        ----------   |CNT=0
+		              |                    |    |/=0          |     |    | 
+		              |                     <---              |      <---   
+                       --------------->----------->-----------
+Tarefas:
+1) Completar a primeira máquina de estados (estratégia A)
+2) Completar e corrigir a máquina de estados da estratégia B
+3) Implementar ambas as soluções utilizando FIFO e BRAM como componentes
+4) Simular no Modelsim, utilizando scripts
+5) Fazer o download na placa e capturar evidências de execução com o SignalTap
+6) Entregas:
+   a) Projeto no Quartus
+   b) entregar snapshots e scripts da simulação no Modelsim 
+   c) entregar evidências de execução no signalTap
+   
+
+					   
