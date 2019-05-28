@@ -1,6 +1,6 @@
 Analysis & Synthesis report for ControleFluxo
-Thu May 02 11:41:57 2019
-Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+Mon May 27 22:49:56 2019
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -13,9 +13,17 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. General Register Statistics
+ 11. Source assignments for fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2
+ 12. Source assignments for fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3
+ 13. Parameter Settings for User Entity Instance: fifo:fila|scfifo:scfifo_component
+ 14. scfifo Parameter Settings by Entity Instance
+ 15. Port Connectivity Checks: "fifo:fila"
+ 16. Port Connectivity Checks: "DIVISOR:clock_divider"
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -38,24 +46,24 @@ applicable agreement for further details.
 
 
 
-+---------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                    ;
-+------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May 02 11:41:57 2019      ;
-; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
-; Revision Name                      ; ControleFluxo                              ;
-; Top-level Entity Name              ; ControleFluxo                              ;
-; Family                             ; Cyclone II                                 ;
-; Total logic elements               ; 1                                          ;
-;     Total combinational functions  ; 1                                          ;
-;     Dedicated logic registers      ; 0                                          ;
-; Total registers                    ; 0                                          ;
-; Total pins                         ; 3                                          ;
-; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 0                                          ;
-; Embedded Multiplier 9-bit elements ; 0                                          ;
-; Total PLLs                         ; 0                                          ;
-+------------------------------------+--------------------------------------------+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon May 27 22:49:56 2019           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; ControleFluxo                                   ;
+; Top-level Entity Name              ; ControleFluxo                                   ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 91                                              ;
+;     Total combinational functions  ; 81                                              ;
+;     Dedicated logic registers      ; 68                                              ;
+; Total registers                    ; 68                                              ;
+; Total pins                         ; 11                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 4,096                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -154,53 +162,101 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                         ; Library ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------------+---------+
-; ControleFluxo.vhd                ; yes             ; User VHDL File  ; D:/Documents/a906867/ProjetosQuartus/controleFluxo/ControleFluxo.vhd ;         ;
-+----------------------------------+-----------------+-----------------+----------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                          ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                      ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------+---------+
+; divisor.vhd                      ; yes             ; User VHDL File               ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/divisor.vhd            ;         ;
+; ControleFluxo.vhd                ; yes             ; User VHDL File               ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/ControleFluxo.vhd      ;         ;
+; fifo.vhd                         ; yes             ; User Wizard-Generated File   ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/fifo.vhd               ;         ;
+; scfifo.tdf                       ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/scfifo.tdf                                      ;         ;
+; a_regfifo.inc                    ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_regfifo.inc                                   ;         ;
+; a_dpfifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_dpfifo.inc                                    ;         ;
+; a_i2fifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_i2fifo.inc                                    ;         ;
+; a_fffifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_fffifo.inc                                    ;         ;
+; a_f2fifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_f2fifo.inc                                    ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                  ;         ;
+; db/scfifo_5d31.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/scfifo_5d31.tdf     ;         ;
+; db/a_dpfifo_cj31.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/a_dpfifo_cj31.tdf   ;         ;
+; db/a_fefifo_s7f.tdf              ; yes             ; Auto-Generated Megafunction  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/a_fefifo_s7f.tdf    ;         ;
+; db/cntr_uj7.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/cntr_uj7.tdf        ;         ;
+; db/dpram_1u01.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/dpram_1u01.tdf      ;         ;
+; db/altsyncram_asj1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/altsyncram_asj1.tdf ;         ;
+; db/altsyncram_cmc1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/altsyncram_cmc1.tdf ;         ;
+; db/cntr_ijb.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/cntr_ijb.tdf        ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-; Estimated Total logic elements              ; 1     ;
-;                                             ;       ;
-; Total combinational functions               ; 1     ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 1     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 1     ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 3     ;
-; Embedded Multiplier 9-bit elements          ; 0     ;
-; Maximum fan-out node                        ; c~0   ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 3     ;
-; Average fan-out                             ; 0.75  ;
-+---------------------------------------------+-------+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                               ;
++---------------------------------------------+-----------------------------+
+; Resource                                    ; Usage                       ;
++---------------------------------------------+-----------------------------+
+; Estimated Total logic elements              ; 91                          ;
+;                                             ;                             ;
+; Total combinational functions               ; 81                          ;
+; Logic element usage by number of LUT inputs ;                             ;
+;     -- 4 input functions                    ; 15                          ;
+;     -- 3 input functions                    ; 18                          ;
+;     -- <=2 input functions                  ; 48                          ;
+;                                             ;                             ;
+; Logic elements by mode                      ;                             ;
+;     -- normal mode                          ; 33                          ;
+;     -- arithmetic mode                      ; 48                          ;
+;                                             ;                             ;
+; Total registers                             ; 68                          ;
+;     -- Dedicated logic registers            ; 68                          ;
+;     -- I/O registers                        ; 0                           ;
+;                                             ;                             ;
+; I/O pins                                    ; 11                          ;
+; Total memory bits                           ; 4096                        ;
+; Embedded Multiplier 9-bit elements          ; 0                           ;
+; Maximum fan-out node                        ; DIVISOR:clock_divider|DIV_1 ;
+; Maximum fan-out                             ; 56                          ;
+; Total fan-out                               ; 586                         ;
+; Average fan-out                             ; 3.49                        ;
++---------------------------------------------+-----------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |ControleFluxo             ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 3    ; 0            ; |ControleFluxo      ;              ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                         ;
++----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                         ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                         ; Library Name ;
++----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |ControleFluxo                                     ; 81 (9)            ; 68 (19)      ; 4096        ; 0            ; 0       ; 0         ; 11   ; 0            ; |ControleFluxo                                                                                                                                                              ; work         ;
+;    |DIVISOR:clock_divider|                         ; 34 (34)           ; 20 (20)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|DIVISOR:clock_divider                                                                                                                                        ; work         ;
+;    |fifo:fila|                                     ; 38 (0)            ; 29 (0)       ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila                                                                                                                                                    ; work         ;
+;       |scfifo:scfifo_component|                    ; 38 (0)            ; 29 (0)       ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component                                                                                                                            ; work         ;
+;          |scfifo_5d31:auto_generated|              ; 38 (0)            ; 29 (0)       ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated                                                                                                 ; work         ;
+;             |a_dpfifo_cj31:dpfifo|                 ; 38 (2)            ; 29 (0)       ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo                                                                            ; work         ;
+;                |a_fefifo_s7f:fifo_state|           ; 18 (9)            ; 11 (2)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state                                                    ; work         ;
+;                   |cntr_uj7:count_usedw|           ; 9 (9)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state|cntr_uj7:count_usedw                               ; work         ;
+;                |cntr_ijb:rd_ptr_count|             ; 9 (9)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|cntr_ijb:rd_ptr_count                                                      ; work         ;
+;                |cntr_ijb:wr_ptr|                   ; 9 (9)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|cntr_ijb:wr_ptr                                                            ; work         ;
+;                |dpram_1u01:FIFOram|                ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram                                                         ; work         ;
+;                   |altsyncram_asj1:altsyncram2|    ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2                             ; work         ;
+;                      |altsyncram_cmc1:altsyncram3| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3 ; work         ;
++----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                                          ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                                                                                                    ; Type ; Mode           ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+------+
+; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3|ALTSYNCRAM ; AUTO ; True Dual Port ; 512          ; 8            ; 512          ; 8            ; 4096 ; None ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                          ;
++--------+--------------+---------+--------------+--------------+--------------------------+-------------------------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance          ; IP Include File                                                                     ;
++--------+--------------+---------+--------------+--------------+--------------------------+-------------------------------------------------------------------------------------+
+; Altera ; FIFO         ; N/A     ; N/A          ; N/A          ; |ControleFluxo|fifo:fila ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/fifo.vhd ;
++--------+--------------+---------+--------------+--------------+--------------------------+-------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -208,14 +264,94 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 68    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 20    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 42    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2 ;
++---------------------------------+--------------------+------+-------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                        ;
++---------------------------------+--------------------+------+-------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                         ;
++---------------------------------+--------------------+------+-------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3 ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                                                    ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                                                     ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fifo:fila|scfifo:scfifo_component ;
++-------------------------+-------------+----------------------------------------+
+; Parameter Name          ; Value       ; Type                                   ;
++-------------------------+-------------+----------------------------------------+
+; AUTO_CARRY_CHAINS       ; ON          ; AUTO_CARRY                             ;
+; IGNORE_CARRY_BUFFERS    ; OFF         ; IGNORE_CARRY                           ;
+; AUTO_CASCADE_CHAINS     ; ON          ; AUTO_CASCADE                           ;
+; IGNORE_CASCADE_BUFFERS  ; OFF         ; IGNORE_CASCADE                         ;
+; lpm_width               ; 8           ; Signed Integer                         ;
+; LPM_NUMWORDS            ; 512         ; Signed Integer                         ;
+; LPM_WIDTHU              ; 9           ; Signed Integer                         ;
+; LPM_SHOWAHEAD           ; OFF         ; Untyped                                ;
+; UNDERFLOW_CHECKING      ; ON          ; Untyped                                ;
+; OVERFLOW_CHECKING       ; ON          ; Untyped                                ;
+; ALLOW_RWCYCLE_WHEN_FULL ; OFF         ; Untyped                                ;
+; ADD_RAM_OUTPUT_REGISTER ; OFF         ; Untyped                                ;
+; ALMOST_FULL_VALUE       ; 0           ; Untyped                                ;
+; ALMOST_EMPTY_VALUE      ; 0           ; Untyped                                ;
+; USE_EAB                 ; ON          ; Untyped                                ;
+; MAXIMIZE_SPEED          ; 5           ; Untyped                                ;
+; DEVICE_FAMILY           ; Cyclone II  ; Untyped                                ;
+; OPTIMIZE_FOR_SPEED      ; 5           ; Untyped                                ;
+; CBXI_PARAMETER          ; scfifo_5d31 ; Untyped                                ;
++-------------------------+-------------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; scfifo Parameter Settings by Entity Instance                   ;
++----------------------------+-----------------------------------+
+; Name                       ; Value                             ;
++----------------------------+-----------------------------------+
+; Number of entity instances ; 1                                 ;
+; Entity Instance            ; fifo:fila|scfifo:scfifo_component ;
+;     -- FIFO Type           ; Single Clock                      ;
+;     -- lpm_width           ; 8                                 ;
+;     -- LPM_NUMWORDS        ; 512                               ;
+;     -- LPM_SHOWAHEAD       ; OFF                               ;
+;     -- USE_EAB             ; ON                                ;
++----------------------------+-----------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo:fila"                                                                           ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; empty ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; usedw ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "DIVISOR:clock_divider"                                                               ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; div_5 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -232,16 +368,34 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Thu May 02 11:41:53 2019
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Mon May 27 22:49:50 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ControleFluxo -c ControleFluxo
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file divisor.vhd
+    Info (12022): Found design unit 1: DIVISOR-x
+    Info (12023): Found entity 1: DIVISOR
+Info (12021): Found 2 design units, including 1 entities, in source file fifo_tb.vhd
+    Info (12022): Found design unit 1: fifo_tb-y
+    Info (12023): Found entity 1: fifo_tb
+Info (12021): Found 2 design units, including 1 entities, in source file statecontroller.vhd
+    Info (12022): Found design unit 1: StateController-behave
+    Info (12023): Found entity 1: StateController
+Info (12021): Found 2 design units, including 1 entities, in source file wrcontrolbp.vhd
+    Info (12022): Found design unit 1: WrControlBP-Behave
+    Info (12023): Found entity 1: WrControlBP
+Info (12021): Found 2 design units, including 1 entities, in source file wrcontrol.vhd
+    Info (12022): Found design unit 1: WrControl-Behave
+    Info (12023): Found entity 1: WrControl
+Info (12021): Found 2 design units, including 1 entities, in source file rdcontrol.vhd
+    Info (12022): Found design unit 1: RdControl-Behave
+    Info (12023): Found entity 1: RdControl
 Info (12021): Found 2 design units, including 1 entities, in source file controlefluxo.vhd
     Info (12022): Found design unit 1: ControleFluxo-behave
     Info (12023): Found entity 1: ControleFluxo
 Info (12021): Found 2 design units, including 1 entities, in source file fifo.vhd
     Info (12022): Found design unit 1: fifo-SYN
-    Info (12023): Found entity 1: Fifo
+    Info (12023): Found entity 1: fifo
 Info (12021): Found 2 design units, including 1 entities, in source file initializedram.vhd
     Info (12022): Found design unit 1: initializedram-SYN
     Info (12023): Found entity 1: InitializedRam
@@ -249,16 +403,61 @@ Info (12021): Found 2 design units, including 1 entities, in source file blankra
     Info (12022): Found design unit 1: blankram-SYN
     Info (12023): Found entity 1: blankRam
 Info (12127): Elaborating entity "ControleFluxo" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(49): object "clk_5" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(53): object "fifo_usage" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(54): object "fifo_empty" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at ControleFluxo.vhd(82): signal "clk_1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "DIVISOR" for hierarchy "DIVISOR:clock_divider"
+Warning (10541): VHDL Signal Declaration warning at divisor.vhd(9): used implicit default value for signal "DIV_5" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info (12128): Elaborating entity "fifo" for hierarchy "fifo:fila"
+Info (12128): Elaborating entity "scfifo" for hierarchy "fifo:fila|scfifo:scfifo_component"
+Info (12130): Elaborated megafunction instantiation "fifo:fila|scfifo:scfifo_component"
+Info (12133): Instantiated megafunction "fifo:fila|scfifo:scfifo_component" with the following parameter:
+    Info (12134): Parameter "add_ram_output_register" = "OFF"
+    Info (12134): Parameter "intended_device_family" = "Cyclone II"
+    Info (12134): Parameter "lpm_numwords" = "512"
+    Info (12134): Parameter "lpm_showahead" = "OFF"
+    Info (12134): Parameter "lpm_type" = "scfifo"
+    Info (12134): Parameter "lpm_width" = "8"
+    Info (12134): Parameter "lpm_widthu" = "9"
+    Info (12134): Parameter "overflow_checking" = "ON"
+    Info (12134): Parameter "underflow_checking" = "ON"
+    Info (12134): Parameter "use_eab" = "ON"
+Info (12021): Found 1 design units, including 1 entities, in source file db/scfifo_5d31.tdf
+    Info (12023): Found entity 1: scfifo_5d31
+Info (12128): Elaborating entity "scfifo_5d31" for hierarchy "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated"
+Info (12021): Found 1 design units, including 1 entities, in source file db/a_dpfifo_cj31.tdf
+    Info (12023): Found entity 1: a_dpfifo_cj31
+Info (12128): Elaborating entity "a_dpfifo_cj31" for hierarchy "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo"
+Info (12021): Found 1 design units, including 1 entities, in source file db/a_fefifo_s7f.tdf
+    Info (12023): Found entity 1: a_fefifo_s7f
+Info (12128): Elaborating entity "a_fefifo_s7f" for hierarchy "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state"
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_uj7.tdf
+    Info (12023): Found entity 1: cntr_uj7
+Info (12128): Elaborating entity "cntr_uj7" for hierarchy "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state|cntr_uj7:count_usedw"
+Info (12021): Found 1 design units, including 1 entities, in source file db/dpram_1u01.tdf
+    Info (12023): Found entity 1: dpram_1u01
+Info (12128): Elaborating entity "dpram_1u01" for hierarchy "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_asj1.tdf
+    Info (12023): Found entity 1: altsyncram_asj1
+Info (12128): Elaborating entity "altsyncram_asj1" for hierarchy "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_cmc1.tdf
+    Info (12023): Found entity 1: altsyncram_cmc1
+Info (12128): Elaborating entity "altsyncram_cmc1" for hierarchy "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3"
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_ijb.tdf
+    Info (12023): Found entity 1: cntr_ijb
+Info (12128): Elaborating entity "cntr_ijb" for hierarchy "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|cntr_ijb:rd_ptr_count"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 4 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 110 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 1 output pins
-    Info (21061): Implemented 1 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 475 megabytes
-    Info: Processing ended: Thu May 02 11:41:57 2019
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:01
+    Info (21059): Implemented 9 output pins
+    Info (21061): Implemented 91 logic cells
+    Info (21064): Implemented 8 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4660 megabytes
+    Info: Processing ended: Mon May 27 22:49:56 2019
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
 
 

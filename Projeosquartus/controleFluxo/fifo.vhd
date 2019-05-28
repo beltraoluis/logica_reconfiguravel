@@ -61,8 +61,6 @@ ARCHITECTURE SYN OF fifo IS
 	SIGNAL sub_wire2	: STD_LOGIC ;
 	SIGNAL sub_wire3	: STD_LOGIC_VECTOR (7 DOWNTO 0);
 
-
-
 	COMPONENT scfifo
 	GENERIC (
 		add_ram_output_register		: STRING;
