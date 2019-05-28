@@ -10,7 +10,6 @@ use ieee.numeric_std.all;
 entity ControleFluxo is
 	port(
 		test_output: out std_logic_vector(7 downto 0);
-		test_clk: out std_logic;
 		clk, rst: in std_logic
 	);
 end entity;
@@ -34,6 +33,7 @@ architecture behave of ControleFluxo is
 				);
 			end component;
 	
+	
 	component divisor is 
 				port	(
 				CLK: in std_logic;
@@ -45,59 +45,94 @@ architecture behave of ControleFluxo is
 			
 --Início declaração dos sinais
 
+component InitializedRam IS
+	PORT
+	(
+		clock		: IN STD_LOGIC  := '1'; --
+		data		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);--
+		rdaddress		: IN STD_LOGIC_VECTOR (9 DOWNTO 0);--
+		rden		: IN STD_LOGIC  := '1';--
+		wraddress		: IN STD_LOGIC_VECTOR (9 DOWNTO 0);--
+		wren		: IN STD_LOGIC  := '0';--
+		q		: OUT STD_LOGIC_VECTOR (7 DOWNTO 0)--
+	);
+END component;
+
 	signal clk_1: std_logic; -- saída 1 do divisor
 	signal clk_5: std_logic; -- saída 2 do divisor
 	
 	--Sinais FIFO
+	signal fifo_clk: std_logic; -- saída 1 do divisor
 	signal fifo_input, fifo_output : std_logic_vector(7 downto 0) := "00000000"; --entrada fifo (testes)
 	signal fifo_usage : std_logic_vector(8 downto 0) := "000000000"; --pq tem 9 bits?
 	signal fifo_rdreq, fifo_wrreq, fifo_empty, fifo_full: std_logic := '0'; -- rdreq fifo
+	
+	--Sinais INITIALIZED_RAM LEITURA)
+	signal init_ram_clk: std_logic; -- saída 1 do divisor
+	signal init_ram_input, init_ram_output : std_logic_vector(7 downto 0) := "00000000"; 
+	signal init_ram_rdaddress, init_ram_wraddress : std_logic_vector(9 downto 0) := "0000000000";
+	signal init_ram_rden, init_ram_wren: std_logic := '0'; -- rdreq fifo
 	
 --Término declaração dos sinais	
 	begin
 --PortMap dos componentes
 
-	clock_divider: divisor 
+		clock_divider: divisor 
 		port map(
-		CLK => clk, --recebe clk do controleFluxo
-		RST => rst,
-		DIV_1=> clk_1, --normal
-		DIV_5 => clk_5); --5x mais rápido
+			CLK => clk, --recebe clk do controleFluxo
+			RST => rst,
+			DIV_1=> clk_1, --normal
+			DIV_5 => clk_5); --5x mais rápido
 		
-	fila: fifo
+		fila: fifo
 		port map(
-		clock		=>  clk_1,
-		data		=> fifo_input,
-		rdreq		=> fifo_rdreq ,
-		wrreq		=> fifo_wrreq ,
-		empty		=> fifo_empty , --posso mapear direto pra saida do top-level
-		full		=> fifo_full,
-		q			=> fifo_output, --test_output
-		usedw		=> fifo_usage
+			clock		=> fifo_clk,
+			data		=> fifo_input,
+			rdreq		=> fifo_rdreq ,
+			wrreq		=> fifo_wrreq ,
+			empty		=> fifo_empty , --posso mapear direto pra saida do top-level
+			full		=> fifo_full,
+			q			=> fifo_output, --test_output
+			usedw		=> fifo_usage
+			);
+
+		init_ram: InitializedRam
+		port map(
+		clock			=> init_ram_clk,
+		data			=> init_ram_input,
+		rdaddress	=> init_ram_rdaddress,    -- 10bits
+		rden			=> init_ram_rden,
+		wraddress	=> init_ram_wraddress, --posso mapear direto pra saida do top-level
+		wren			=> init_ram_wren,
+		q				=> init_ram_output --test_output
 		);
 
-	process (rst)
+	process (rst, clk_1)
 	begin --Process code
+	
+	fifo_clk <= clk_1;
+	init_ram_clk <= clk_1;
 	
 	if clk_1' event and clk_1 = '1' then
 	
+	--Teste fifo
 		if fifo_full = '0' then -- se não estiver cheia 
-			
 			fifo_input <= std_logic_vector( unsigned(fifo_input) + 1 ); 
 			fifo_wrreq <= '1';
 			fifo_rdreq <= '0';
-			
 		elsif fifo_full = '1' then 
-		
 			fifo_wrreq <= '0';
 			fifo_rdreq <= '1';  --test_output está ligada na saída q
-			test_output <= fifo_output;
+			test_output <= fifo_output; 
 		end if;
-		
-		
-		test_clk <= clk_1;
-	end if;
 	
+	
+	init_ram_wren <= '0';
+	init_ram_rden <= '1';
+	--test_output <= init_ram_output;
+	init_ram_rdaddress <= "0000000000"; --std_logic_vector( unsigned(init_ram_rdaddress) + 1 ); 
+	
+	end if; 
 	
 	end process;
 end architecture;

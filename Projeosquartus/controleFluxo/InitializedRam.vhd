@@ -57,8 +57,6 @@ ARCHITECTURE SYN OF initializedram IS
 
 	SIGNAL sub_wire0	: STD_LOGIC_VECTOR (7 DOWNTO 0);
 
-
-
 	COMPONENT altsyncram
 	GENERIC (
 		address_reg_b		: STRING;
