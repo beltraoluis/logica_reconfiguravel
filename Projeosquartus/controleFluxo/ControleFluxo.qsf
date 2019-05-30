@@ -53,14 +53,6 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_location_assignment PIN_N2 -to clk
-set_location_assignment PIN_AD12 -to test_output[7]
-set_location_assignment PIN_AE12 -to test_output[6]
-set_location_assignment PIN_AE13 -to test_output[5]
-set_location_assignment PIN_AF13 -to test_output[4]
-set_location_assignment PIN_AE15 -to test_output[3]
-set_location_assignment PIN_AD15 -to test_output[2]
-set_location_assignment PIN_AC14 -to test_output[1]
-set_location_assignment PIN_AA13 -to test_output[0]
 set_location_assignment PIN_V2 -to rst
 set_location_assignment PIN_AC16 -to test_led
 set_global_assignment -name HEX_FILE ControleFluxo.hex
@@ -75,7 +67,6 @@ set_global_assignment -name QIP_FILE Fifo.qip
 set_global_assignment -name QIP_FILE InitializedRam.qip
 set_global_assignment -name QIP_FILE blankRam.qip
 set_global_assignment -name VHDL_FILE fifo.vhd
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_location_assignment PIN_AA14 -to cnt_output[8]
 set_location_assignment PIN_AC21 -to cnt_output[7]
 set_location_assignment PIN_AD21 -to cnt_output[6]
@@ -85,11 +76,20 @@ set_location_assignment PIN_AC22 -to cnt_output[3]
 set_location_assignment PIN_AB21 -to cnt_output[2]
 set_location_assignment PIN_AF23 -to cnt_output[1]
 set_location_assignment PIN_AE23 -to cnt_output[0]
-set_location_assignment PIN_Y18 -to rd_output[7]
-set_location_assignment PIN_AA20 -to rd_output[6]
-set_location_assignment PIN_U17 -to rd_output[5]
-set_location_assignment PIN_U18 -to rd_output[4]
-set_location_assignment PIN_V18 -to rd_output[3]
-set_location_assignment PIN_W19 -to rd_output[2]
-set_location_assignment PIN_AF22 -to rd_output[1]
-set_location_assignment PIN_AE22 -to rd_output[0]
+set_location_assignment PIN_AD12 -to rd_output[7]
+set_location_assignment PIN_AE12 -to rd_output[6]
+set_location_assignment PIN_AE13 -to rd_output[5]
+set_location_assignment PIN_AF13 -to rd_output[4]
+set_location_assignment PIN_AE15 -to rd_output[3]
+set_location_assignment PIN_AD15 -to rd_output[2]
+set_location_assignment PIN_AC14 -to rd_output[1]
+set_location_assignment PIN_AA13 -to rd_output[0]
+set_location_assignment PIN_Y18 -to wr_output[7]
+set_location_assignment PIN_AA20 -to wr_output[6]
+set_location_assignment PIN_U17 -to wr_output[5]
+set_location_assignment PIN_U18 -to wr_output[4]
+set_location_assignment PIN_V18 -to wr_output[3]
+set_location_assignment PIN_W19 -to wr_output[2]
+set_location_assignment PIN_AF22 -to wr_output[1]
+set_location_assignment PIN_AE22 -to wr_output[0]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

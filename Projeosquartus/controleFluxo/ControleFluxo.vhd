@@ -73,6 +73,8 @@ END component;
 	
 	signal clk_1: std_logic; -- saída 1 do divisor
 	signal clk_5: std_logic; -- saída 2 do divisor
+	signal wr_en: std_logic:= '1'; -- saida do state_controller
+	signal rd_en: std_logic:= '1'; -- saida do state_controller
 	
 	--Sinais FIFO
 	signal fifo_clk: std_logic; -- saída 1 do divisor
@@ -142,33 +144,18 @@ END component;
 	process (rst, clk_1)
 	begin --Process code
 	
-	--fifo_clk <= clk_1;
 	init_ram_clk <= clk_1;
 	
-	if clk_1' event and clk_1 = '1' then
+	if clk_1' event and clk_1 = '1' then	
 		
-	--Teste initRam
-			
-		--test_output <= init_ram_output;
-		
-		if init_ram_wraddress < "00000000000" then 
-			
-			init_ram_wraddress <= std_logic_vector( unsigned(init_ram_wraddress) + 1 ); 
-			
-			init_ram_wren <= '1' after 1ns;
-			
-			init_ram_input <= std_logic_vector( unsigned(init_ram_input) + 1 ); 
-			
-			--init_ram_rden <= '0' after 1ns;
-			test_led <= '0';
-			
-		else 
-			init_ram_rdaddress <= std_logic_vector( unsigned(init_ram_rdaddress) + 1 ); 
-			
-			init_ram_rden <= '1' after 1ns;
-			
-			rd_output <= init_ram_output;
-			
+		if rd_en = '1' then 
+				
+				init_ram_rden <= '1' after 1ns;
+				
+				rd_output <= init_ram_output;
+				
+				init_ram_rdaddress <= std_logic_vector( unsigned(init_ram_rdaddress) + 1 ); 
+
 		end if;
 	
 	end if; --End clock
@@ -184,16 +171,18 @@ END component;
 	
 	if clk_1' event and clk_1 = '1' then
 		--Teste fifo
-		if fifo_full = '0' then -- se não estiver cheia 
+		if fifo_full = '0' and rd_en = '1' then -- se não estiver cheia 
 			
-			fifo_input <= std_logic_vector( unsigned(fifo_input) + 1 ); 
+			fifo_input <= init_ram_output;--std_logic_vector( unsigned(fifo_input) + 1 ); 
 			fifo_wrreq <= '1';
 			fifo_rdreq <= '0';
+			cnt_output <= fifo_usage; 
+
 		elsif fifo_full = '1' then 
 			
 			fifo_wrreq <= '0';
 			fifo_rdreq <= '1';  --test_output está ligada na saída q
-			--cnt_output <= fifo_output; 
+			cnt_output <= fifo_usage; 
 			
 		end if; --end fifo
 	
