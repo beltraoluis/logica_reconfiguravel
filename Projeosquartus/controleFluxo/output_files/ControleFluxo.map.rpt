@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ControleFluxo
-Thu May 30 14:10:22 2019
+Thu May 30 15:36:38 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -16,19 +16,23 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
  10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Source assignments for fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2
- 14. Source assignments for fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3
- 15. Source assignments for InitializedRam:init_ram|altsyncram:altsyncram_component|altsyncram_e3u1:auto_generated
- 16. Parameter Settings for User Entity Instance: fifo:fila|scfifo:scfifo_component
- 17. Parameter Settings for User Entity Instance: InitializedRam:init_ram|altsyncram:altsyncram_component
- 18. scfifo Parameter Settings by Entity Instance
- 19. altsyncram Parameter Settings by Entity Instance
- 20. Port Connectivity Checks: "fifo:fila"
- 21. Port Connectivity Checks: "DIVISOR:clock_divider"
- 22. Elapsed Time Per Partition
- 23. Analysis & Synthesis Messages
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Source assignments for fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2
+ 15. Source assignments for fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3
+ 16. Source assignments for InitializedRam:init_ram|altsyncram:altsyncram_component|altsyncram_e3u1:auto_generated
+ 17. Source assignments for blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated
+ 18. Parameter Settings for User Entity Instance: fifo:fila|scfifo:scfifo_component
+ 19. Parameter Settings for User Entity Instance: InitializedRam:init_ram|altsyncram:altsyncram_component
+ 20. Parameter Settings for User Entity Instance: blankRam:blank_ram|altsyncram:altsyncram_component
+ 21. scfifo Parameter Settings by Entity Instance
+ 22. altsyncram Parameter Settings by Entity Instance
+ 23. Port Connectivity Checks: "blankRam:blank_ram"
+ 24. Port Connectivity Checks: "fifo:fila"
+ 25. Port Connectivity Checks: "DIVISOR:clock_divider"
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
 
 
 
@@ -54,16 +58,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May 30 14:10:22 2019           ;
+; Analysis & Synthesis Status        ; Successful - Thu May 30 15:36:38 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; ControleFluxo                                   ;
 ; Top-level Entity Name              ; ControleFluxo                                   ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 84                                              ;
-;     Total combinational functions  ; 74                                              ;
-;     Dedicated logic registers      ; 59                                              ;
-; Total registers                    ; 59                                              ;
-; Total pins                         ; 11                                              ;
+; Total logic elements               ; 89                                              ;
+;     Total combinational functions  ; 79                                              ;
+;     Dedicated logic registers      ; 62                                              ;
+; Total registers                    ; 62                                              ;
+; Total pins                         ; 28                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 8,192                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -167,41 +171,43 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                    ;
-+----------------------------------+-----------------+----------------------------------------+---------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                                      ; Library ;
-+----------------------------------+-----------------+----------------------------------------+---------------------------------------------------------------------------------------------------+---------+
-; divisor.vhd                      ; yes             ; User VHDL File                         ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/divisor.vhd            ;         ;
-; ControleFluxo.vhd                ; yes             ; User VHDL File                         ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/ControleFluxo.vhd      ;         ;
-; fifo.vhd                         ; yes             ; User Wizard-Generated File             ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/fifo.vhd               ;         ;
-; InitializedRam.vhd               ; yes             ; User Wizard-Generated File             ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/InitializedRam.vhd     ;         ;
-; scfifo.tdf                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/scfifo.tdf                                      ;         ;
-; a_regfifo.inc                    ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_regfifo.inc                                   ;         ;
-; a_dpfifo.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_dpfifo.inc                                    ;         ;
-; a_i2fifo.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_i2fifo.inc                                    ;         ;
-; a_fffifo.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_fffifo.inc                                    ;         ;
-; a_f2fifo.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_f2fifo.inc                                    ;         ;
-; aglobal130.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                  ;         ;
-; db/scfifo_5d31.tdf               ; yes             ; Auto-Generated Megafunction            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/scfifo_5d31.tdf     ;         ;
-; db/a_dpfifo_cj31.tdf             ; yes             ; Auto-Generated Megafunction            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/a_dpfifo_cj31.tdf   ;         ;
-; db/a_fefifo_s7f.tdf              ; yes             ; Auto-Generated Megafunction            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/a_fefifo_s7f.tdf    ;         ;
-; db/cntr_uj7.tdf                  ; yes             ; Auto-Generated Megafunction            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/cntr_uj7.tdf        ;         ;
-; db/dpram_1u01.tdf                ; yes             ; Auto-Generated Megafunction            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/dpram_1u01.tdf      ;         ;
-; db/altsyncram_asj1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/altsyncram_asj1.tdf ;         ;
-; db/altsyncram_cmc1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/altsyncram_cmc1.tdf ;         ;
-; db/cntr_ijb.tdf                  ; yes             ; Auto-Generated Megafunction            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/cntr_ijb.tdf        ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf                                  ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc                           ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                                     ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc                                  ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc                                   ;         ;
-; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                                      ;         ;
-; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                                      ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc                                    ;         ;
-; db/altsyncram_e3u1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/altsyncram_e3u1.tdf ;         ;
-; controlefluxo.hex                ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/controlefluxo.hex      ;         ;
-+----------------------------------+-----------------+----------------------------------------+---------------------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                   ;
++----------------------------------+-----------------+---------------------------------------+---------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                             ; File Name with Absolute Path                                                                      ; Library ;
++----------------------------------+-----------------+---------------------------------------+---------------------------------------------------------------------------------------------------+---------+
+; ControleFluxo.hex                ; yes             ; User Hexadecimal (Intel-Format) File  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/ControleFluxo.hex      ;         ;
+; divisor.vhd                      ; yes             ; User VHDL File                        ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/divisor.vhd            ;         ;
+; ControleFluxo.vhd                ; yes             ; User VHDL File                        ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/ControleFluxo.vhd      ;         ;
+; fifo.vhd                         ; yes             ; User Wizard-Generated File            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/fifo.vhd               ;         ;
+; InitializedRam.vhd               ; yes             ; User Wizard-Generated File            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/InitializedRam.vhd     ;         ;
+; blankRam.vhd                     ; yes             ; User Wizard-Generated File            ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/blankRam.vhd           ;         ;
+; scfifo.tdf                       ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/scfifo.tdf                                      ;         ;
+; a_regfifo.inc                    ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_regfifo.inc                                   ;         ;
+; a_dpfifo.inc                     ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_dpfifo.inc                                    ;         ;
+; a_i2fifo.inc                     ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_i2fifo.inc                                    ;         ;
+; a_fffifo.inc                     ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_fffifo.inc                                    ;         ;
+; a_f2fifo.inc                     ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_f2fifo.inc                                    ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                  ;         ;
+; db/scfifo_5d31.tdf               ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/scfifo_5d31.tdf     ;         ;
+; db/a_dpfifo_cj31.tdf             ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/a_dpfifo_cj31.tdf   ;         ;
+; db/a_fefifo_s7f.tdf              ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/a_fefifo_s7f.tdf    ;         ;
+; db/cntr_uj7.tdf                  ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/cntr_uj7.tdf        ;         ;
+; db/dpram_1u01.tdf                ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/dpram_1u01.tdf      ;         ;
+; db/altsyncram_asj1.tdf           ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/altsyncram_asj1.tdf ;         ;
+; db/altsyncram_cmc1.tdf           ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/altsyncram_cmc1.tdf ;         ;
+; db/cntr_ijb.tdf                  ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/cntr_ijb.tdf        ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf                                  ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc                           ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                                     ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc                                  ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc                                   ;         ;
+; altrom.inc                       ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                                      ;         ;
+; altram.inc                       ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                                      ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc                                    ;         ;
+; db/altsyncram_e3u1.tdf           ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/altsyncram_e3u1.tdf ;         ;
+; db/altsyncram_acr1.tdf           ; yes             ; Auto-Generated Megafunction           ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/db/altsyncram_acr1.tdf ;         ;
++----------------------------------+-----------------+---------------------------------------+---------------------------------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------------------------+
@@ -209,29 +215,29 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------------------------+
 ; Resource                                    ; Usage                       ;
 +---------------------------------------------+-----------------------------+
-; Estimated Total logic elements              ; 84                          ;
+; Estimated Total logic elements              ; 89                          ;
 ;                                             ;                             ;
-; Total combinational functions               ; 74                          ;
+; Total combinational functions               ; 79                          ;
 ; Logic element usage by number of LUT inputs ;                             ;
-;     -- 4 input functions                    ; 10                          ;
+;     -- 4 input functions                    ; 11                          ;
 ;     -- 3 input functions                    ; 12                          ;
-;     -- <=2 input functions                  ; 52                          ;
+;     -- <=2 input functions                  ; 56                          ;
 ;                                             ;                             ;
 ; Logic elements by mode                      ;                             ;
-;     -- normal mode                          ; 34                          ;
-;     -- arithmetic mode                      ; 40                          ;
+;     -- normal mode                          ; 35                          ;
+;     -- arithmetic mode                      ; 44                          ;
 ;                                             ;                             ;
-; Total registers                             ; 59                          ;
-;     -- Dedicated logic registers            ; 59                          ;
+; Total registers                             ; 62                          ;
+;     -- Dedicated logic registers            ; 62                          ;
 ;     -- I/O registers                        ; 0                           ;
 ;                                             ;                             ;
-; I/O pins                                    ; 11                          ;
+; I/O pins                                    ; 28                          ;
 ; Total memory bits                           ; 8192                        ;
 ; Embedded Multiplier 9-bit elements          ; 0                           ;
 ; Maximum fan-out node                        ; DIVISOR:clock_divider|DIV_1 ;
-; Maximum fan-out                             ; 47                          ;
-; Total fan-out                               ; 532                         ;
-; Average fan-out                             ; 3.50                        ;
+; Maximum fan-out                             ; 46                          ;
+; Total fan-out                               ; 562                         ;
+; Average fan-out                             ; 3.18                        ;
 +---------------------------------------------+-----------------------------+
 
 
@@ -240,8 +246,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                   ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------+--------------+
-; |ControleFluxo                            ; 74 (40)           ; 59 (39)      ; 8192        ; 0            ; 0       ; 0         ; 11   ; 0            ; |ControleFluxo                                                                                        ; work         ;
-;    |DIVISOR:clock_divider|                ; 34 (34)           ; 20 (20)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|DIVISOR:clock_divider                                                                  ; work         ;
+; |ControleFluxo                            ; 79 (39)           ; 62 (38)      ; 8192        ; 0            ; 0       ; 0         ; 28   ; 0            ; |ControleFluxo                                                                                        ; work         ;
+;    |DIVISOR:clock_divider|                ; 40 (40)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|DIVISOR:clock_divider                                                                  ; work         ;
 ;    |InitializedRam:init_ram|              ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|InitializedRam:init_ram                                                                ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|InitializedRam:init_ram|altsyncram:altsyncram_component                                ; work         ;
 ;          |altsyncram_e3u1:auto_generated| ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|InitializedRam:init_ram|altsyncram:altsyncram_component|altsyncram_e3u1:auto_generated ; work         ;
@@ -263,23 +269,38 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+----------------------------------------+-----------------------------------------------------------------------------------------------+
 ; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                        ; IP Include File                                                                               ;
 +--------+--------------+---------+--------------+--------------+----------------------------------------+-----------------------------------------------------------------------------------------------+
+; Altera ; RAM: 2-PORT  ; 13.0    ; N/A          ; N/A          ; |ControleFluxo|blankRam:blank_ram      ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/blankRam.vhd       ;
 ; Altera ; FIFO         ; N/A     ; N/A          ; N/A          ; |ControleFluxo|fifo:fila               ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/fifo.vhd           ;
 ; Altera ; RAM: 2-PORT  ; 13.0    ; N/A          ; N/A          ; |ControleFluxo|InitializedRam:init_ram ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/controleFluxo/InitializedRam.vhd ;
 +--------+--------------+---------+--------------+--------------+----------------------------------------+-----------------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                                                                 ;
-+---------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+
-; Register name                                                                                                                               ; Reason for Removal                   ;
-+---------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+
-; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|cntr_ijb:wr_ptr|safe_q[0..8]                              ; Stuck at GND due to stuck port clock ;
-; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|cntr_ijb:rd_ptr_count|safe_q[0..8]                        ; Stuck at GND due to stuck port clock ;
-; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state|cntr_uj7:count_usedw|safe_q[0..8] ; Stuck at GND due to stuck port clock ;
-; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state|b_full                            ; Lost fanout                          ;
-; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state|b_non_empty                       ; Lost fanout                          ;
-; Total Number of Removed Registers = 29                                                                                                      ;                                      ;
-+---------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                   ;
++---------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                                                                                               ; Reason for Removal                     ;
++---------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+; test_led~reg0                                                                                                                               ; Stuck at GND due to stuck port data_in ;
+; fifo_input[0..3]                                                                                                                            ; Lost fanout                            ;
+; fifo_wrreq                                                                                                                                  ; Lost fanout                            ;
+; fifo_rdreq                                                                                                                                  ; Lost fanout                            ;
+; fifo_input[4..7]                                                                                                                            ; Lost fanout                            ;
+; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|cntr_ijb:wr_ptr|safe_q[0..8]                              ; Lost fanout                            ;
+; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|cntr_ijb:rd_ptr_count|safe_q[0..8]                        ; Lost fanout                            ;
+; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state|b_full                            ; Lost fanout                            ;
+; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state|b_non_empty                       ; Lost fanout                            ;
+; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state|cntr_uj7:count_usedw|safe_q[0..8] ; Lost fanout                            ;
+; Total Number of Removed Registers = 40                                                                                                      ;                                        ;
++---------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                           ;
++---------------+--------------------+------------------------------------------------------------------------------------------------------------------+
+; Register name ; Reason for Removal ; Registers Removed due to This Register                                                                           ;
++---------------+--------------------+------------------------------------------------------------------------------------------------------------------+
+; fifo_input[3] ; Lost Fanouts       ; fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|a_fefifo_s7f:fifo_state|b_full ;
++---------------+--------------------+------------------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -287,12 +308,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 59    ;
+; Total registers                              ; 62    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 20    ;
+; Number of registers using Asynchronous Clear ; 24    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 29    ;
+; Number of registers using Clock Enable       ; 37    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -335,6 +356,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------+--------------------+------+-------------------------------------------------+
 ; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                               ;
 +---------------------------------+--------------------+------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Source assignments for blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                         ;
++---------------------------------+--------------------+------+--------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                          ;
++---------------------------------+--------------------+------+--------------------------------------------+
 
 
 +--------------------------------------------------------------------------------+
@@ -426,6 +456,67 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: blankRam:blank_ram|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-------------------------------------+
+; Parameter Name                     ; Value                ; Type                                ;
++------------------------------------+----------------------+-------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                             ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                          ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                        ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                        ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                      ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                             ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                             ;
+; WIDTH_A                            ; 8                    ; Signed Integer                      ;
+; WIDTHAD_A                          ; 10                   ; Signed Integer                      ;
+; NUMWORDS_A                         ; 1024                 ; Signed Integer                      ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                             ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                             ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                             ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                             ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                             ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                             ;
+; WIDTH_B                            ; 8                    ; Signed Integer                      ;
+; WIDTHAD_B                          ; 10                   ; Signed Integer                      ;
+; NUMWORDS_B                         ; 1024                 ; Signed Integer                      ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                             ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                             ;
+; RDCONTROL_REG_B                    ; CLOCK0               ; Untyped                             ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                             ;
+; OUTDATA_REG_B                      ; CLOCK0               ; Untyped                             ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                             ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                             ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                             ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                             ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                             ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                             ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                             ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                      ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                             ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                             ;
+; BYTE_SIZE                          ; 8                    ; Untyped                             ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                             ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                             ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                             ;
+; INIT_FILE                          ; UNUSED               ; Untyped                             ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                             ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                             ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                             ;
+; CLOCK_ENABLE_INPUT_B               ; BYPASS               ; Untyped                             ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                             ;
+; CLOCK_ENABLE_OUTPUT_B              ; BYPASS               ; Untyped                             ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                             ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                             ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                             ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                             ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                             ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                             ;
+; CBXI_PARAMETER                     ; altsyncram_acr1      ; Untyped                             ;
++------------------------------------+----------------------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +----------------------------------------------------------------+
 ; scfifo Parameter Settings by Entity Instance                   ;
 +----------------------------+-----------------------------------+
@@ -446,7 +537,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+---------------------------------------------------------+
 ; Name                                      ; Value                                                   ;
 +-------------------------------------------+---------------------------------------------------------+
-; Number of entity instances                ; 1                                                       ;
+; Number of entity instances                ; 2                                                       ;
 ; Entity Instance                           ; InitializedRam:init_ram|altsyncram:altsyncram_component ;
 ;     -- OPERATION_MODE                     ; DUAL_PORT                                               ;
 ;     -- WIDTH_A                            ; 8                                                       ;
@@ -458,7 +549,32 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- OUTDATA_REG_B                      ; CLOCK0                                                  ;
 ;     -- RAM_BLOCK_TYPE                     ; AUTO                                                    ;
 ;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                                ;
+; Entity Instance                           ; blankRam:blank_ram|altsyncram:altsyncram_component      ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                               ;
+;     -- WIDTH_A                            ; 8                                                       ;
+;     -- NUMWORDS_A                         ; 1024                                                    ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                            ;
+;     -- WIDTH_B                            ; 8                                                       ;
+;     -- NUMWORDS_B                         ; 1024                                                    ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                  ;
+;     -- OUTDATA_REG_B                      ; CLOCK0                                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                    ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                               ;
 +-------------------------------------------+---------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "blankRam:blank_ram"                                                                      ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; data      ; Input  ; Info     ; Stuck at GND                                                                        ;
+; rdaddress ; Input  ; Info     ; Stuck at GND                                                                        ;
+; rden      ; Input  ; Info     ; Stuck at GND                                                                        ;
+; wraddress ; Input  ; Info     ; Stuck at GND                                                                        ;
+; wren      ; Input  ; Info     ; Stuck at GND                                                                        ;
+; q         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------+
@@ -466,11 +582,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port  ; Type   ; Severity ; Details                                                                             ;
 +-------+--------+----------+-------------------------------------------------------------------------------------+
-; data  ; Input  ; Info     ; Stuck at GND                                                                        ;
-; rdreq ; Input  ; Info     ; Stuck at GND                                                                        ;
-; wrreq ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; empty ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; full  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; q     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; usedw ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +-------+--------+----------+-------------------------------------------------------------------------------------+
@@ -500,7 +612,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Thu May 30 14:10:18 2019
+    Info: Processing started: Thu May 30 15:36:31 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ControleFluxo -c ControleFluxo
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file divisor.vhd
@@ -534,15 +646,18 @@ Info (12021): Found 2 design units, including 1 entities, in source file blankra
     Info (12022): Found design unit 1: blankram-SYN
     Info (12023): Found entity 1: blankRam
 Info (12127): Elaborating entity "ControleFluxo" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(63): object "clk_5" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at ControleFluxo.vhd(66): used implicit default value for signal "fifo_clk" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10540): VHDL Signal Declaration warning at ControleFluxo.vhd(67): used explicit default value for signal "fifo_input" because signal was never assigned a value
-Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(67): object "fifo_output" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(68): object "fifo_usage" assigned a value but never read
-Warning (10540): VHDL Signal Declaration warning at ControleFluxo.vhd(69): used explicit default value for signal "fifo_rdreq" because signal was never assigned a value
-Warning (10540): VHDL Signal Declaration warning at ControleFluxo.vhd(69): used explicit default value for signal "fifo_wrreq" because signal was never assigned a value
-Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(69): object "fifo_empty" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(69): object "fifo_full" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at ControleFluxo.vhd(13): used implicit default value for signal "wr_output" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at ControleFluxo.vhd(14): used implicit default value for signal "cnt_output" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(75): object "clk_5" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(79): object "fifo_output" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(80): object "fifo_usage" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(81): object "fifo_empty" assigned a value but never read
+Warning (10540): VHDL Signal Declaration warning at ControleFluxo.vhd(91): used explicit default value for signal "blank_ram_input" because signal was never assigned a value
+Warning (10036): Verilog HDL or VHDL warning at ControleFluxo.vhd(91): object "blank_ram_output" assigned a value but never read
+Warning (10540): VHDL Signal Declaration warning at ControleFluxo.vhd(92): used explicit default value for signal "blank_ram_rdaddress" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ControleFluxo.vhd(92): used explicit default value for signal "blank_ram_wraddress" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ControleFluxo.vhd(93): used explicit default value for signal "blank_ram_rden" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at ControleFluxo.vhd(93): used explicit default value for signal "blank_ram_wren" because signal was never assigned a value
 Info (12128): Elaborating entity "DIVISOR" for hierarchy "DIVISOR:clock_divider"
 Warning (10541): VHDL Signal Declaration warning at divisor.vhd(9): used implicit default value for signal "DIV_5" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Info (12128): Elaborating entity "fifo" for hierarchy "fifo:fila"
@@ -611,8 +726,43 @@ Info (12133): Instantiated megafunction "InitializedRam:init_ram|altsyncram:alts
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_e3u1.tdf
     Info (12023): Found entity 1: altsyncram_e3u1
 Info (12128): Elaborating entity "altsyncram_e3u1" for hierarchy "InitializedRam:init_ram|altsyncram:altsyncram_component|altsyncram_e3u1:auto_generated"
+Info (12128): Elaborating entity "blankRam" for hierarchy "blankRam:blank_ram"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "blankRam:blank_ram|altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "blankRam:blank_ram|altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "blankRam:blank_ram|altsyncram:altsyncram_component" with the following parameter:
+    Info (12134): Parameter "address_reg_b" = "CLOCK0"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_b" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone II"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "1024"
+    Info (12134): Parameter "numwords_b" = "1024"
+    Info (12134): Parameter "operation_mode" = "DUAL_PORT"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_b" = "CLOCK0"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "rdcontrol_reg_b" = "CLOCK0"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "widthad_a" = "10"
+    Info (12134): Parameter "widthad_b" = "10"
+    Info (12134): Parameter "width_a" = "8"
+    Info (12134): Parameter "width_b" = "8"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_acr1.tdf
+    Info (12023): Found entity 1: altsyncram_acr1
+Info (12128): Elaborating entity "altsyncram_acr1" for hierarchy "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated"
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated|q_b[0]"
+        Warning (14320): Synthesized away node "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated|q_b[1]"
+        Warning (14320): Synthesized away node "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated|q_b[2]"
+        Warning (14320): Synthesized away node "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated|q_b[3]"
+        Warning (14320): Synthesized away node "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated|q_b[4]"
+        Warning (14320): Synthesized away node "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated|q_b[5]"
+        Warning (14320): Synthesized away node "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated|q_b[6]"
+        Warning (14320): Synthesized away node "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated|q_b[7]"
         Warning (14320): Synthesized away node "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3|q_a[0]"
         Warning (14320): Synthesized away node "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3|q_a[1]"
         Warning (14320): Synthesized away node "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3|q_a[2]"
@@ -621,18 +771,37 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3|q_a[5]"
         Warning (14320): Synthesized away node "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3|q_a[6]"
         Warning (14320): Synthesized away node "fifo:fila|scfifo:scfifo_component|scfifo_5d31:auto_generated|a_dpfifo_cj31:dpfifo|dpram_1u01:FIFOram|altsyncram_asj1:altsyncram2|altsyncram_cmc1:altsyncram3|q_a[7]"
-Info (17049): 2 registers lost all their fanouts during netlist optimizations.
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "test_led" is stuck at GND
+    Warning (13410): Pin "wr_output[0]" is stuck at GND
+    Warning (13410): Pin "wr_output[1]" is stuck at GND
+    Warning (13410): Pin "wr_output[2]" is stuck at GND
+    Warning (13410): Pin "wr_output[3]" is stuck at GND
+    Warning (13410): Pin "wr_output[4]" is stuck at GND
+    Warning (13410): Pin "wr_output[5]" is stuck at GND
+    Warning (13410): Pin "wr_output[6]" is stuck at GND
+    Warning (13410): Pin "wr_output[7]" is stuck at GND
+    Warning (13410): Pin "cnt_output[0]" is stuck at GND
+    Warning (13410): Pin "cnt_output[1]" is stuck at GND
+    Warning (13410): Pin "cnt_output[2]" is stuck at GND
+    Warning (13410): Pin "cnt_output[3]" is stuck at GND
+    Warning (13410): Pin "cnt_output[4]" is stuck at GND
+    Warning (13410): Pin "cnt_output[5]" is stuck at GND
+    Warning (13410): Pin "cnt_output[6]" is stuck at GND
+    Warning (13410): Pin "cnt_output[7]" is stuck at GND
+    Warning (13410): Pin "cnt_output[8]" is stuck at GND
+Info (17049): 39 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 103 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 125 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 9 output pins
-    Info (21061): Implemented 84 logic cells
+    Info (21059): Implemented 26 output pins
+    Info (21061): Implemented 89 logic cells
     Info (21064): Implemented 8 RAM segments
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 4663 megabytes
-    Info: Processing ended: Thu May 30 14:10:22 2019
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 51 warnings
+    Info: Peak virtual memory: 4667 megabytes
+    Info: Processing ended: Thu May 30 15:36:38 2019
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:06
 
 

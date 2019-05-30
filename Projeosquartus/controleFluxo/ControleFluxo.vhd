@@ -10,16 +10,15 @@ use ieee.numeric_std.all;
 entity ControleFluxo is
 	port(
 		test_led: out std_logic;
-		test_output: out std_logic_vector(7 downto 0);
+		rd_output, wr_output: out std_logic_vector(7 downto 0); 
+		cnt_output: out std_logic_vector(8 downto 0);
 		clk, rst: in std_logic
 	);
 end entity;
 
---adicionar a ram cheia, a ram vazia e a fifo
-
 architecture behave of ControleFluxo is
 
---Declaração dos componentes --
+---- Declaração dos componentes 
 	component fifo is 
 				port
 				(
@@ -42,11 +41,7 @@ architecture behave of ControleFluxo is
 				DIV_1, DIV_5: out std_logic
 				);
 	end component;
-		
-			
---Início declaração dos sinais
-
-component InitializedRam IS
+	component InitializedRam IS
 	PORT
 	(
 		clock		: IN STD_LOGIC  := '1'; --
@@ -59,6 +54,23 @@ component InitializedRam IS
 	);
 END component;
 
+	component blankRam IS
+		PORT
+		(
+			clock		: IN STD_LOGIC  := '1'; --
+			data		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);--
+			rdaddress		: IN STD_LOGIC_VECTOR (9 DOWNTO 0);--
+			rden		: IN STD_LOGIC  := '1';--
+			wraddress		: IN STD_LOGIC_VECTOR (9 DOWNTO 0);--
+			wren		: IN STD_LOGIC  := '0';--
+			q		: OUT STD_LOGIC_VECTOR (7 DOWNTO 0)--
+		);
+	END component;
+
+
+----  Início declaração dos sinais
+
+	
 	signal clk_1: std_logic; -- saída 1 do divisor
 	signal clk_5: std_logic; -- saída 2 do divisor
 	
@@ -74,15 +86,15 @@ END component;
 	signal init_ram_rdaddress, init_ram_wraddress : std_logic_vector(9 downto 0) := "0000000000";
 	signal init_ram_rden, init_ram_wren: std_logic := '0'; -- rdreq fifo
 	
-	--Sinais INITIALIZED_RAM (ESCRITA)
-	--signal init_ram_clk: std_logic; -- saída 1 do divisor
-	--signal init_ram_input, init_ram_output : std_logic_vector(7 downto 0) := "01010101"; 
-	--signal init_ram_rdaddress, init_ram_wraddress : std_logic_vector(9 downto 0) := "0000000000";
-	--signal init_ram_rden, init_ram_wren: std_logic := '0'; -- rdreq fifo
+	--Sinais BLANK_RAM (ESCRITA)
+	signal blank_ram_clk: std_logic; -- saída 1 do divisor
+	signal blank_ram_input, blank_ram_output : std_logic_vector(7 downto 0) := "00000000"; 
+	signal blank_ram_rdaddress, blank_ram_wraddress : std_logic_vector(9 downto 0) := "0000000000";
+	signal blank_ram_rden, blank_ram_wren: std_logic := '0'; -- rdreq fifo
 	
---Término declaração dos sinais	
 	begin
---PortMap dos componentes
+	
+----  PortMap dos componentes
 
 		clock_divider: divisor 
 		port map(
@@ -113,7 +125,20 @@ END component;
 		wren			=> init_ram_wren,
 		q				=> init_ram_output --test_output
 		);
+		
+		blank_ram: blankRam
+		port map(
+		clock			=> blank_ram_clk,
+		data			=> blank_ram_input,
+		rdaddress	=> blank_ram_rdaddress,    -- 10bits
+		rden			=> blank_ram_rden,
+		wraddress	=> blank_ram_wraddress, --posso mapear direto pra saida do top-level
+		wren			=> blank_ram_wren,
+		q				=> blank_ram_output --test_output
+		);
 
+	
+	-- PROCESSO RAM LEITURA
 	process (rst, clk_1)
 	begin --Process code
 	
@@ -124,9 +149,9 @@ END component;
 		
 	--Teste initRam
 			
-		test_output <= init_ram_output;
+		--test_output <= init_ram_output;
 		
-		if init_ram_wraddress < "1111111111" then 
+		if init_ram_wraddress < "00000000000" then 
 			
 			init_ram_wraddress <= std_logic_vector( unsigned(init_ram_wraddress) + 1 ); 
 			
@@ -142,9 +167,68 @@ END component;
 			
 			init_ram_rden <= '1' after 1ns;
 			
-			test_output <= init_ram_output;
+			rd_output <= init_ram_output;
 			
-			test_led <= '1';
+		end if;
+	
+	end if; --End clock
+	
+	end process;
+	
+	
+	--processo FIFO
+	process (rst, clk_1)
+	begin --Process code
+	
+	fifo_clk <= clk_1;
+	
+	if clk_1' event and clk_1 = '1' then
+		--Teste fifo
+		if fifo_full = '0' then -- se não estiver cheia 
+			
+			fifo_input <= std_logic_vector( unsigned(fifo_input) + 1 ); 
+			fifo_wrreq <= '1';
+			fifo_rdreq <= '0';
+		elsif fifo_full = '1' then 
+			
+			fifo_wrreq <= '0';
+			fifo_rdreq <= '1';  --test_output está ligada na saída q
+			--cnt_output <= fifo_output; 
+			
+		end if; --end fifo
+	
+	end if; --End clock
+	
+	end process;
+	
+	
+	--processo RAM ESCRITA
+	process (rst, clk_1)
+	begin --Process code
+
+	blank_ram_clk <= clk_1;
+	
+	if clk_1' event and clk_1 = '1' then
+				
+		
+		if init_ram_wraddress < "00000000000" then 
+			
+			--init_ram_wraddress <= std_logic_vector( unsigned(init_ram_wraddress) + 1 ); 
+			
+			--init_ram_wren <= '1' after 1ns;
+			
+			--init_ram_input <= std_logic_vector( unsigned(init_ram_input) + 1 ); 
+			
+			--init_ram_rden <= '0' after 1ns;
+			
+			
+		else 
+			
+			--init_ram_rdaddress <= std_logic_vector( unsigned(init_ram_rdaddress) + 1 ); 
+			
+			--init_ram_rden <= '1' after 1ns;
+			
+			--wr_output <= init_ram_output;
 			
 		end if;
 	
