@@ -69,7 +69,7 @@ END component;
 	
 	--Sinais INITIALIZED_RAM LEITURA)
 	signal init_ram_clk: std_logic; -- saída 1 do divisor
-	signal init_ram_input, init_ram_output : std_logic_vector(7 downto 0) := "00000000"; 
+	signal init_ram_input, init_ram_output : std_logic_vector(7 downto 0) := "01010101"; 
 	signal init_ram_rdaddress, init_ram_wraddress : std_logic_vector(9 downto 0) := "0000000000";
 	signal init_ram_rden, init_ram_wren: std_logic := '0'; -- rdreq fifo
 	
@@ -110,7 +110,7 @@ END component;
 	process (rst, clk_1)
 	begin --Process code
 	
-	fifo_clk <= clk_1;
+	--fifo_clk <= clk_1;
 	init_ram_clk <= clk_1;
 	
 	if clk_1' event and clk_1 = '1' then
@@ -123,14 +123,17 @@ END component;
 		elsif fifo_full = '1' then 
 			fifo_wrreq <= '0';
 			fifo_rdreq <= '1';  --test_output está ligada na saída q
-			test_output <= fifo_output; 
+			--test_output <= fifo_output; 
 		end if;
-	
-	
-	init_ram_wren <= '0';
-	init_ram_rden <= '1';
-	--test_output <= init_ram_output;
-	init_ram_rdaddress <= "0000000000"; --std_logic_vector( unsigned(init_ram_rdaddress) + 1 ); 
+		
+		--Teste initRam
+		if init_ram_wraddress /= "1111111111" then -- se não estiver cheia 
+			init_ram_wren <= '1';
+			init_ram_rden <= '1';
+			init_ram_input <= std_logic_vector( unsigned(init_ram_input) + 1 ); 
+			test_output <= init_ram_output;
+		else 
+		end if;
 	
 	end if; 
 	

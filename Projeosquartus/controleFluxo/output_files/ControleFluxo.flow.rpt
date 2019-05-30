@@ -1,5 +1,5 @@
 Flow report for ControleFluxo
-Mon May 27 23:49:42 2019
+Thu May 30 11:00:46 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,20 +40,20 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Mon May 27 23:49:41 2019           ;
+; Flow Status                        ; Successful - Thu May 30 11:00:46 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; ControleFluxo                                   ;
 ; Top-level Entity Name              ; ControleFluxo                                   ;
 ; Family                             ; Cyclone II                                      ;
 ; Device                             ; EP2C35F672C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 94 / 33,216 ( < 1 % )                           ;
-;     Total combinational functions  ; 86 / 33,216 ( < 1 % )                           ;
-;     Dedicated logic registers      ; 71 / 33,216 ( < 1 % )                           ;
-; Total registers                    ; 71                                              ;
+; Total logic elements               ; 64 / 33,216 ( < 1 % )                           ;
+;     Total combinational functions  ; 56 / 33,216 ( < 1 % )                           ;
+;     Dedicated logic registers      ; 41 / 33,216 ( < 1 % )                           ;
+; Total registers                    ; 41                                              ;
 ; Total pins                         ; 10 / 475 ( 2 % )                                ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 4,096 / 483,840 ( < 1 % )                       ;
+; Total memory bits                  ; 16 / 483,840 ( < 1 % )                          ;
 ; Embedded Multiplier 9-bit elements ; 0 / 70 ( 0 % )                                  ;
 ; Total PLLs                         ; 0 / 4 ( 0 % )                                   ;
 +------------------------------------+-------------------------------------------------+
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/27/2019 23:49:04 ;
+; Start date & time ; 05/30/2019 11:00:27 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ControleFluxo       ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                           ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 180454979758129.155901174303116 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 180454979758129.155922482606748 ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)          ; <None>        ; --          ; --             ;
 ; IP_TOOL_NAME                        ; FIFO                            ; --            ; --          ; --             ;
@@ -101,12 +101,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:08     ; 1.0                     ; 4655 MB             ; 00:00:07                           ;
-; Fitter                    ; 00:00:14     ; 1.0                     ; 4808 MB             ; 00:00:13                           ;
-; Assembler                 ; 00:00:06     ; 1.0                     ; 4570 MB             ; 00:00:05                           ;
-; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 4550 MB             ; 00:00:03                           ;
+; Analysis & Synthesis      ; 00:00:03     ; 1.0                     ; 4659 MB             ; 00:00:03                           ;
+; Fitter                    ; 00:00:08     ; 1.0                     ; 4802 MB             ; 00:00:07                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 4567 MB             ; 00:00:03                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4539 MB             ; 00:00:02                           ;
 ; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4518 MB             ; 00:00:01                           ;
-; Total                     ; 00:00:32     ; --                      ; --                  ; 00:00:29                           ;
+; Total                     ; 00:00:17     ; --                      ; --                  ; 00:00:16                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
