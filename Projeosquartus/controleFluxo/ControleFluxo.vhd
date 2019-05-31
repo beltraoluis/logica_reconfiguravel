@@ -66,15 +66,23 @@ END component;
 			q		: OUT STD_LOGIC_VECTOR (7 DOWNTO 0)--
 		);
 	END component;
-
+	
+	component StateController IS
+		PORT
+		(
+			rst: in std_logic;
+			cnt: in std_logic_vector(8 downto 0);
+			wr_en, rd_en: out std_logic
+		);
+	END component;
 
 ----  Início declaração dos sinais
 
 	
 	signal clk_1: std_logic; -- saída 1 do divisor
 	signal clk_2: std_logic; -- saída 2 do divisor
-	signal wr_en: std_logic:= '1'; -- saida do state_controller
-	signal rd_en: std_logic:= '1'; -- saida do state_controller
+	signal second_fifo_usage : std_logic_vector(8 downto 0) := "000000100"; --pq tem 9 bits?
+
 	
 	--Sinais FIFO
 	signal fifo_clk: std_logic; -- saída 1 do divisor
@@ -93,6 +101,11 @@ END component;
 	signal blank_ram_input, blank_ram_output : std_logic_vector(7 downto 0) := "10011010"; 
 	signal blank_ram_rdaddress, blank_ram_wraddress : std_logic_vector(9 downto 0) := "0000000000";
 	signal blank_ram_rden, blank_ram_wren: std_logic := '0'; -- rdreq fifo
+	
+	--Sinais StateController
+	--signal fifo_state_cnt: std_logic; -- fifo->state
+	signal wr_en: std_logic:= '0'; -- saida do state_controller
+	signal rd_en: std_logic:= '0'; -- saida do state_controller
 	
 	begin
 	
@@ -138,81 +151,65 @@ END component;
 		wren			=> blank_ram_wren,
 		q				=> blank_ram_output --test_output
 		);
+		
+		state_controller: StateController 
+		port map(
+			rst => rst,
+			cnt => second_fifo_usage, 
+			wr_en => wr_en,
+			rd_en => rd_en); 
 
 	
-	-- PROCESSO RAM LEITURA
-	process (rst, clk_2)
+	-- PROCESSO RAM ESCREVE NA FIFO
+	process (rst, clk_2, clk_1)
 	begin --Process code
 	
 	init_ram_clk <= clk_2;
+	fifo_clk <= clk_2;
+	blank_ram_clk <= clk_1;
 	
 	if clk_2' event and clk_2 = '1' then	
 		
-		if rd_en = '1' then 
+		if wr_en = '1' and init_ram_rdaddress < "11111111"  then 
 				
 				init_ram_rden <= '1';
 				
-				rd_output <= init_ram_output;
-				
+				if fifo_full = '0' and rd_en = '1' then -- se não estiver cheia 
+			
+					fifo_input <= init_ram_output after 3ns;--std_logic_vector( unsigned(fifo_input) + 1 ); 
+					fifo_wrreq <= '1';
+					fifo_rdreq <= '0';
+					cnt_output <= fifo_usage; 
+
+				elsif fifo_full = '1' then 
+					
+					fifo_wrreq <= '0';
+					fifo_rdreq <= '1';  --test_output está ligada na saída q
+					cnt_output <= fifo_usage; 
+					
+				end if; --end fifo
+	
+				---cnt_output <= fifo_usage;
+			   rd_output <= init_ram_output;
 				init_ram_rdaddress <= std_logic_vector( unsigned(init_ram_rdaddress) + 1 ); 
-
-		end if;
-	
-	end if; --End clock
-	
-	end process;
-	
-	
-	--processo FIFO
-	process (rst, clk_2)
-	begin --Process code
-	
-	fifo_clk <= clk_2;
-	
-	if clk_2' event and clk_2 = '1' then
-		--Teste fifo
-		if fifo_full = '0' and rd_en = '1' then -- se não estiver cheia 
-			
-			fifo_input <= init_ram_output;--std_logic_vector( unsigned(fifo_input) + 1 ); 
-			fifo_wrreq <= '1';
-			
-			cnt_output <= fifo_usage; 
-			
-			--fifo_rdreq <= '1';
-
-		--a cada clock a fifo vai tentar liberar 2caras
-		elsif fifo_full = '1' then 
-			
-			fifo_wrreq <= '0';
-			fifo_rdreq <= '1';  --test_output está ligada na saída q
-			--wr_output <= fifo_output; 
-			
-		end if; --end fifo
-	
-	end if; --End clock
-	
-	end process;
-	
-	
-	--processo RAM ESCRITA
-	process (rst, clk_1)
-	begin --Process code
-
-	blank_ram_clk <= clk_1;
-	
-	if clk_1' event and clk_1 = '1' then
-				
-		if wr_en = '1' then 
 		
-				fifo_rdreq <= '1';
-				
+		else rd_output <= "00000000";
+		end if;
+		
+	end if; --End clock
+	
+	if clk_1' event and clk_1 = '1' then	
+		
+		if rd_en = '1' then 
+		
 			   blank_ram_wren <= '1';
 				
 				wr_output <= fifo_output;
 				
 				blank_ram_rdaddress <= std_logic_vector( unsigned(blank_ram_rdaddress) + 1 ); 
-				
-				fifo_rdreq <= '0';
+		
+		else wr_output <= "11111111";
+		
 		end if;
 	
 	end if; --End clock
