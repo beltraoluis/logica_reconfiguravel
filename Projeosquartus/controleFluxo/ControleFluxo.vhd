@@ -185,7 +185,6 @@ END component;
 					
 					fifo_wrreq <= '0';
 					fifo_rdreq <= '1';  --test_output está ligada na saída q
-					cnt_output <= fifo_usage; 
 					
 				end if; --end fifo
 	
@@ -193,7 +192,9 @@ END component;
 			   rd_output <= init_ram_output;
 				init_ram_rdaddress <= std_logic_vector( unsigned(init_ram_rdaddress) + 1 ); 
 		
-		else rd_output <= "00000000";
+		else-- rd_output <= "00000000";
+		
+		cnt_output <= fifo_usage; 
 		end if;
 		
 	end if; --End clock
@@ -208,7 +209,8 @@ END component;
 				
 				blank_ram_rdaddress <= std_logic_vector( unsigned(blank_ram_rdaddress) + 1 ); 
 		
-		else wr_output <= "11111111";
+		else 
+			wr_output <= "11111111";
 		
 		end if;
 	

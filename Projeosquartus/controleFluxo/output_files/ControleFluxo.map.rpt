@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ControleFluxo
-Fri May 31 00:05:32 2019
+Tue Jun 04 21:24:56 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -59,15 +59,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri May 31 00:05:32 2019           ;
+; Analysis & Synthesis Status        ; Successful - Tue Jun 04 21:24:56 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; ControleFluxo                                   ;
 ; Top-level Entity Name              ; ControleFluxo                                   ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 180                                             ;
-;     Total combinational functions  ; 162                                             ;
-;     Dedicated logic registers      ; 120                                             ;
-; Total registers                    ; 120                                             ;
+; Total logic elements               ; 183                                             ;
+;     Total combinational functions  ; 157                                             ;
+;     Dedicated logic registers      ; 122                                             ;
+; Total registers                    ; 122                                             ;
 ; Total pins                         ; 28                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 12,288                                          ;
@@ -217,20 +217,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------------------------+
 ; Resource                                    ; Usage                       ;
 +---------------------------------------------+-----------------------------+
-; Estimated Total logic elements              ; 180                         ;
+; Estimated Total logic elements              ; 183                         ;
 ;                                             ;                             ;
-; Total combinational functions               ; 162                         ;
+; Total combinational functions               ; 157                         ;
 ; Logic element usage by number of LUT inputs ;                             ;
-;     -- 4 input functions                    ; 38                          ;
-;     -- 3 input functions                    ; 35                          ;
+;     -- 4 input functions                    ; 48                          ;
+;     -- 3 input functions                    ; 20                          ;
 ;     -- <=2 input functions                  ; 89                          ;
 ;                                             ;                             ;
 ; Logic elements by mode                      ;                             ;
-;     -- normal mode                          ; 89                          ;
-;     -- arithmetic mode                      ; 73                          ;
+;     -- normal mode                          ; 82                          ;
+;     -- arithmetic mode                      ; 75                          ;
 ;                                             ;                             ;
-; Total registers                             ; 120                         ;
-;     -- Dedicated logic registers            ; 120                         ;
+; Total registers                             ; 122                         ;
+;     -- Dedicated logic registers            ; 122                         ;
 ;     -- I/O registers                        ; 0                           ;
 ;                                             ;                             ;
 ; I/O pins                                    ; 28                          ;
@@ -238,8 +238,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Embedded Multiplier 9-bit elements          ; 0                           ;
 ; Maximum fan-out node                        ; DIVISOR:clock_divider|DIV_5 ;
 ; Maximum fan-out                             ; 83                          ;
-; Total fan-out                               ; 1071                        ;
-; Average fan-out                             ; 3.29                        ;
+; Total fan-out                               ; 1080                        ;
+; Average fan-out                             ; 3.34                        ;
 +---------------------------------------------+-----------------------------+
 
 
@@ -248,8 +248,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                         ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                         ; Library Name ;
 +----------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |ControleFluxo                                     ; 162 (35)          ; 120 (46)     ; 12288       ; 0            ; 0       ; 0         ; 28   ; 0            ; |ControleFluxo                                                                                                                                                              ; work         ;
-;    |DIVISOR:clock_divider|                         ; 75 (75)           ; 45 (45)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|DIVISOR:clock_divider                                                                                                                                        ; work         ;
+; |ControleFluxo                                     ; 157 (28)          ; 122 (46)     ; 12288       ; 0            ; 0       ; 0         ; 28   ; 0            ; |ControleFluxo                                                                                                                                                              ; work         ;
+;    |DIVISOR:clock_divider|                         ; 77 (77)           ; 47 (47)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|DIVISOR:clock_divider                                                                                                                                        ; work         ;
 ;    |InitializedRam:init_ram|                       ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|InitializedRam:init_ram                                                                                                                                      ; work         ;
 ;       |altsyncram:altsyncram_component|            ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|InitializedRam:init_ram|altsyncram:altsyncram_component                                                                                                      ; work         ;
 ;          |altsyncram_e3u1:auto_generated|          ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleFluxo|InitializedRam:init_ram|altsyncram:altsyncram_component|altsyncram_e3u1:auto_generated                                                                       ; work         ;
@@ -326,12 +326,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 120   ;
+; Total registers                              ; 122   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 45    ;
+; Number of registers using Asynchronous Clear ; 47    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 57    ;
+; Number of registers using Clock Enable       ; 65    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -341,7 +341,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |ControleFluxo|fifo_wrreq                                             ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |ControleFluxo|cnt_output[1]~reg0                                     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |ControleFluxo|fifo_rdreq                                             ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |ControleFluxo|StateController:state_controller|wr_state_next.wr_wait ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
 
@@ -648,7 +649,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri May 31 00:05:27 2019
+    Info: Processing started: Tue Jun 04 21:24:49 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ControleFluxo -c ControleFluxo
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file divisor.vhd
@@ -787,36 +788,36 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
     Info (12023): Found entity 1: altsyncram_acr1
 Info (12128): Elaborating entity "altsyncram_acr1" for hierarchy "blankRam:blank_ram|altsyncram:altsyncram_component|altsyncram_acr1:auto_generated"
 Info (12128): Elaborating entity "StateController" for hierarchy "StateController:state_controller"
-Warning (10492): VHDL Process Statement warning at StateController.vhd(34): signal "wr_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(35): signal "wr_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(38): signal "wr_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(39): signal "wr_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(42): signal "wr_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(43): signal "wr_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(46): signal "wr_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(47): signal "wr_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(35): signal "wr_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(36): signal "wr_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(39): signal "wr_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(40): signal "wr_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(43): signal "wr_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(44): signal "wr_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(47): signal "wr_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(48): signal "wr_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10631): VHDL Process Statement warning at StateController.vhd(27): inferring latch(es) for signal or variable "wr_state_reg", which holds its previous value in one or more paths through the process
 Warning (10631): VHDL Process Statement warning at StateController.vhd(27): inferring latch(es) for signal or variable "wr_state_next", which holds its previous value in one or more paths through the process
-Warning (10492): VHDL Process Statement warning at StateController.vhd(60): signal "rd_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(61): signal "rd_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(64): signal "rd_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(65): signal "rd_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(68): signal "rd_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(69): signal "rd_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(72): signal "rd_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at StateController.vhd(73): signal "rd_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at StateController.vhd(53): inferring latch(es) for signal or variable "rd_state_reg", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at StateController.vhd(53): inferring latch(es) for signal or variable "rd_state_next", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at StateController.vhd(81): inferring latch(es) for signal or variable "wr_en", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at StateController.vhd(96): inferring latch(es) for signal or variable "rd_en", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "rd_en" at StateController.vhd(96)
-Info (10041): Inferred latch for "wr_en" at StateController.vhd(81)
-Info (10041): Inferred latch for "rd_state_next.rd_wait" at StateController.vhd(53)
-Info (10041): Inferred latch for "rd_state_next.rd_fifo" at StateController.vhd(53)
-Info (10041): Inferred latch for "rd_state_next.reset" at StateController.vhd(53)
-Info (10041): Inferred latch for "rd_state_reg.rd_wait" at StateController.vhd(53)
-Info (10041): Inferred latch for "rd_state_reg.rd_fifo" at StateController.vhd(53)
-Info (10041): Inferred latch for "rd_state_reg.reset" at StateController.vhd(53)
+Warning (10492): VHDL Process Statement warning at StateController.vhd(61): signal "rd_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(62): signal "rd_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(65): signal "rd_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(66): signal "rd_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(69): signal "rd_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(70): signal "rd_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(73): signal "rd_state_reg" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at StateController.vhd(74): signal "rd_state_next" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at StateController.vhd(54): inferring latch(es) for signal or variable "rd_state_reg", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at StateController.vhd(54): inferring latch(es) for signal or variable "rd_state_next", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at StateController.vhd(82): inferring latch(es) for signal or variable "wr_en", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at StateController.vhd(97): inferring latch(es) for signal or variable "rd_en", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "rd_en" at StateController.vhd(97)
+Info (10041): Inferred latch for "wr_en" at StateController.vhd(82)
+Info (10041): Inferred latch for "rd_state_next.rd_wait" at StateController.vhd(54)
+Info (10041): Inferred latch for "rd_state_next.rd_fifo" at StateController.vhd(54)
+Info (10041): Inferred latch for "rd_state_next.reset" at StateController.vhd(54)
+Info (10041): Inferred latch for "rd_state_reg.rd_wait" at StateController.vhd(54)
+Info (10041): Inferred latch for "rd_state_reg.rd_fifo" at StateController.vhd(54)
+Info (10041): Inferred latch for "rd_state_reg.reset" at StateController.vhd(54)
 Info (10041): Inferred latch for "wr_state_next.wr_wait" at StateController.vhd(27)
 Info (10041): Inferred latch for "wr_state_next.wr_fifo" at StateController.vhd(27)
 Info (10041): Inferred latch for "wr_state_next.reset" at StateController.vhd(27)
@@ -838,15 +839,15 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (17049): 11 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 225 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 228 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 26 output pins
-    Info (21061): Implemented 181 logic cells
+    Info (21061): Implemented 184 logic cells
     Info (21064): Implemented 16 RAM segments
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 45 warnings
-    Info: Peak virtual memory: 4664 megabytes
-    Info: Processing ended: Fri May 31 00:05:32 2019
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 4668 megabytes
+    Info: Processing ended: Tue Jun 04 21:24:56 2019
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
 
 
