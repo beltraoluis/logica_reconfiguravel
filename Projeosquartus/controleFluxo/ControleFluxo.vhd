@@ -9,7 +9,7 @@ use ieee.numeric_std.all;
 
 entity ControleFluxo is
 	port(
-		test_led: out std_logic;
+		test_led, test_led2: out std_logic;
 		rd_output, wr_output: out std_logic_vector(7 downto 0); 
 		cnt_output: out std_logic_vector(8 downto 0);
 		clk, rst: in std_logic
@@ -80,7 +80,7 @@ END component;
 
 	
 	signal clk_1: std_logic; -- saída 1 do divisor
-	signal clk_2: std_logic; -- saída 2 do divisor
+	signal cont_5: std_logic; -- contador 5
 	signal second_fifo_usage : std_logic_vector(8 downto 0) := "000000100"; --pq tem 9 bits?
 
 	
@@ -88,7 +88,7 @@ END component;
 	signal fifo_clk: std_logic; -- saída 1 do divisor
 	signal fifo_input, fifo_output : std_logic_vector(7 downto 0) := "00000000"; --entrada fifo (testes)
 	signal fifo_usage : std_logic_vector(8 downto 0) := "000000000"; --pq tem 9 bits?
-	signal fifo_rdreq, fifo_wrreq, fifo_empty, fifo_full: std_logic := '0'; -- rdreq fifo
+	signal fifo_rdreq, fifo_wrreq, fifo_empty, fifo_full: std_logic := '0';
 	
 	--Sinais INITIALIZED_RAM (LEITURA)
 	signal init_ram_clk: std_logic; -- saída 1 do divisor
@@ -116,7 +116,7 @@ END component;
 			CLK => clk, --recebe clk do controleFluxo
 			RST => rst,
 			DIV_1=> clk_1, --normal
-			DIV_5 => clk_2); --5x mais rápido
+			DIV_5 => cont_5); --5x mais rápido
 		
 		fila: fifo
 		port map(
@@ -161,30 +161,53 @@ END component;
 
 	
 	-- PROCESSO RAM ESCREVE NA FIFO
-	process (rst, clk_2, clk_1)
+	process (rst, clk_1)
+	variable fifo_rdreq_en , fifo_wrreq_en: std_logic := '0';
 	begin --Process code
 	
-	init_ram_clk <= clk_2;
-	fifo_clk <= clk_2;
+	init_ram_clk <= clk_1;
+	fifo_clk <= clk_1;
 	blank_ram_clk <= clk_1;
 	
-	if clk_2' event and clk_2 = '1' then	
+	if clk_1' event and clk_1 = '1'  then	
 		
+		if rd_en = '1' then 
+				
+			   blank_ram_wren <= '1';
+				
+				wr_output <= fifo_output;
+				
+				fifo_rdreq_en := '1' ;--after 3ns;
+				
+				blank_ram_rdaddress <= std_logic_vector( unsigned(blank_ram_rdaddress) + 1 ); 
+		else 
+		
+			--fifo_rdreq_en := '1';
+			wr_output <= "11111111";
+		
+		end if;
+	--else fifo_rdreq_en := '0';
+	
+	end if; --End clock
+	
+	if clk_1' event and clk_1 = '1' then	
+		
+		test_led <= cont_5;
 		if wr_en = '1' and init_ram_rdaddress < "11111111"  then 
 				
 				init_ram_rden <= '1';
 				
 				if fifo_full = '0' and rd_en = '1' then -- se não estiver cheia 
 			
-					fifo_input <= init_ram_output after 3ns;--std_logic_vector( unsigned(fifo_input) + 1 ); 
+					fifo_input <= init_ram_output;--std_logic_vector( unsigned(fifo_input) + 1 ); 
 					fifo_wrreq <= '1';
 					fifo_rdreq <= '0';
 					cnt_output <= fifo_usage; 
-
+					fifo_rdreq_en := '0';
 				elsif fifo_full = '1' then 
 					
-					fifo_wrreq <= '0';
-					fifo_rdreq <= '1';  --test_output está ligada na saída q
+					fifo_wrreq <= fifo_wrreq_en;
+					fifo_rdreq <= fifo_rdreq_en;  --test_output está ligada na saída q
 					
 				end if; --end fifo
 	
@@ -199,22 +222,7 @@ END component;
 		
 	end if; --End clock
 	
-	if clk_1' event and clk_1 = '1' then	
-		
-		if rd_en = '1' then 
-		
-			   blank_ram_wren <= '1';
-				
-				wr_output <= fifo_output;
-				
-				blank_ram_rdaddress <= std_logic_vector( unsigned(blank_ram_rdaddress) + 1 ); 
-		
-		else 
-			wr_output <= "11111111";
-		
-		end if;
-	
-	end if; --End clock
+	fifo_rdreq_en := '0';
 	
 	end process;
 end architecture;

@@ -54,7 +54,7 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_location_assignment PIN_N2 -to clk
 set_location_assignment PIN_V2 -to rst
-set_location_assignment PIN_AC16 -to test_led
+set_location_assignment PIN_AE11 -to test_led
 set_global_assignment -name HEX_FILE ControleFluxo.hex
 set_global_assignment -name VHDL_FILE divisor.vhd
 set_global_assignment -name VHDL_FILE fifo_tb.vhd
