@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Sun Jun 09 15:05:11 2019
+Analysis & Synthesis Status : Successful - Sun Jun 09 17:46:19 2019
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
 Revision Name : ControleFluxo
 Top-level Entity Name : ControleFluxo
 Family : Cyclone II
 Total logic elements : 140
-    Total combinational functions : 121
+    Total combinational functions : 122
     Dedicated logic registers : 94
 Total registers : 94
 Total pins : 29

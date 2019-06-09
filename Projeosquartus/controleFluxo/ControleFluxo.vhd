@@ -172,9 +172,10 @@ END component;
 	
 	if clk_1' event and clk_1 = '1' then	
 		
-		fifo_rdreq <= cont_5;
+		fifo_rdreq <= cont_5 and rd_en;
 		fifo_wrreq <= '1';
 		
+		--ESCREVE NA FIFO
 		if wr_en = '1' and init_ram_rdaddress < "11111111"  then 
 				
 				init_ram_rden <= '1';
@@ -208,7 +209,7 @@ END component;
 			
 			blank_ram_rdaddress <= std_logic_vector( unsigned(blank_ram_rdaddress) + 1 ); 
 			
-			 cnt_output <= fifo_usage;
+			cnt_output <= fifo_usage;
 		else 
 	
 		--fifo_rdreq_en := '1';
