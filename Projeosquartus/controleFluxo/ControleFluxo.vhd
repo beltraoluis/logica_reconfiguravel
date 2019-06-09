@@ -104,7 +104,7 @@ END component;
 	
 	--Sinais StateController
 	--signal fifo_state_cnt: std_logic; -- fifo->state
-	signal wr_en: std_logic:= '0'; -- saida do state_controller
+	signal wr_en: std_logic:= '1'; -- saida do state_controller
 	signal rd_en: std_logic:= '0'; -- saida do state_controller
 	
 	begin
@@ -168,61 +168,58 @@ END component;
 	init_ram_clk <= clk_1;
 	fifo_clk <= clk_1;
 	blank_ram_clk <= clk_1;
-	
-	if clk_1' event and clk_1 = '1'  then	
-		
-		if rd_en = '1' then 
-				
-			   blank_ram_wren <= '1';
-				
-				wr_output <= fifo_output;
-				
-				fifo_rdreq_en := '1' ;--after 3ns;
-				
-				blank_ram_rdaddress <= std_logic_vector( unsigned(blank_ram_rdaddress) + 1 ); 
-		else 
-		
-			--fifo_rdreq_en := '1';
-			wr_output <= "11111111";
-		
-		end if;
-	--else fifo_rdreq_en := '0';
-	
-	end if; --End clock
+	test_led <= cont_5;
 	
 	if clk_1' event and clk_1 = '1' then	
 		
-		test_led <= cont_5;
+		fifo_rdreq <= cont_5;
+		fifo_wrreq <= '1';
+		
 		if wr_en = '1' and init_ram_rdaddress < "11111111"  then 
 				
 				init_ram_rden <= '1';
 				
 				if fifo_full = '0' and rd_en = '1' then -- se não estiver cheia 
-			
+				
 					fifo_input <= init_ram_output;--std_logic_vector( unsigned(fifo_input) + 1 ); 
-					fifo_wrreq <= '1';
-					fifo_rdreq <= '0';
-					cnt_output <= fifo_usage; 
-					fifo_rdreq_en := '0';
-				elsif fifo_full = '1' then 
 					
-					fifo_wrreq <= fifo_wrreq_en;
-					fifo_rdreq <= fifo_rdreq_en;  --test_output está ligada na saída q
+					cnt_output <= fifo_usage; 
+	
+				--elsif fifo_full = '1' then cnt_output <= fifo_usage;
+				else cnt_output <= fifo_usage;
+					
+					--fifo_wrreq <= fifo_wrreq_en;
+					--fifo_rdreq <= fifo_rdreq_en;  --test_output está ligada na saída q
 					
 				end if; --end fifo
-	
-				---cnt_output <= fifo_usage;
+				
 			   rd_output <= init_ram_output;
 				init_ram_rdaddress <= std_logic_vector( unsigned(init_ram_rdaddress) + 1 ); 
 		
-		else-- rd_output <= "00000000";
+		end if; 
 		
-		cnt_output <= fifo_usage; 
+		
+		--RAM QUE TIRA DA FIFO
+		if rd_en = '1' then 
+			
+			blank_ram_wren <= '1';
+			
+			wr_output <= fifo_output;
+			
+			blank_ram_rdaddress <= std_logic_vector( unsigned(blank_ram_rdaddress) + 1 ); 
+			
+			 cnt_output <= fifo_usage;
+		else 
+	
+		--fifo_rdreq_en := '1';
+		wr_output <= "11111111";
+	
 		end if;
 		
+		--cnt_output <= fifo_usage; 
+
 	end if; --End clock
-	
-	fifo_rdreq_en := '0';
+	cnt_output <= fifo_usage;
 	
 	end process;
 end architecture;
