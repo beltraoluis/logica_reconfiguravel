@@ -165,6 +165,7 @@ END component;
 	variable fifo_rdreq_en , fifo_wrreq_en: std_logic := '0';
 	begin --Process code
 	
+	second_fifo_usage <= fifo_usage;
 	init_ram_clk <= clk_1;
 	fifo_clk <= clk_1;
 	blank_ram_clk <= clk_1;
@@ -173,14 +174,14 @@ END component;
 	if clk_1' event and clk_1 = '1' then	
 		
 		fifo_rdreq <= cont_5 and rd_en;
-		fifo_wrreq <= '1';
+		fifo_wrreq <= wr_en;
 		
 		--ESCREVE NA FIFO
 		if wr_en = '1' and init_ram_rdaddress < "11111111"  then 
 				
 				init_ram_rden <= '1';
 				
-				if fifo_full = '0' and rd_en = '1' then -- se não estiver cheia 
+				if fifo_full = '0' then -- se não estiver cheia 
 				
 					fifo_input <= init_ram_output;--std_logic_vector( unsigned(fifo_input) + 1 ); 
 					
@@ -196,7 +197,7 @@ END component;
 				
 			   rd_output <= init_ram_output;
 				init_ram_rdaddress <= std_logic_vector( unsigned(init_ram_rdaddress) + 1 ); 
-		
+	
 		end if; 
 		
 		
@@ -213,13 +214,13 @@ END component;
 		else 
 	
 		--fifo_rdreq_en := '1';
-		wr_output <= "11111111";
+		wr_output <= "10101101";
 	
 		end if;
-		
 		--cnt_output <= fifo_usage; 
 
 	end if; --End clock
+	 
 	cnt_output <= fifo_usage;
 	
 	end process;

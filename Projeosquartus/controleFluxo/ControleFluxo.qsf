@@ -80,8 +80,6 @@ set_location_assignment PIN_V18 -to wr_output[3]
 set_location_assignment PIN_W19 -to wr_output[2]
 set_location_assignment PIN_AF22 -to wr_output[1]
 set_location_assignment PIN_AE22 -to wr_output[0]
-set_global_assignment -name VHDL_FILE ControleFluxo_Tb.vhd
-set_global_assignment -name VHDL_FILE StateController_tb.vhd
 set_global_assignment -name HEX_FILE ControleFluxo.hex
 set_global_assignment -name VHDL_FILE divisor.vhd
 set_global_assignment -name VHDL_FILE fifo_tb.vhd
