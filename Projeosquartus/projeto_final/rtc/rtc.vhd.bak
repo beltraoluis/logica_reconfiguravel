@@ -1,0 +1,54 @@
+-- André Luiz Rodrigues dos Santos
+-- RA1500759-UTFPR
+-- Luí­s Henriqu eBeltrão Santana
+-- RA906867-UTFPR
+-- 20190404
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity rtc is
+	port(
+		--test_led, test_led2: out std_logic;
+		write_data: in std_logic_vector(42 downto 0); 	
+		en_wr, en_rd, reset: in std_logic;
+		data: out std_logic_vector(42 downto 0)
+	);
+end entity;
+
+--               ┌───────┐
+-- write_data ███▌       │
+--               │       │
+--      en_wr ───┤   r   │
+--               │   t   ▐███ output
+--     enable ───┤   c   │
+--               │       │
+--      reset ───┤       │
+--               └───────┘
+
+architecture rtc_behave of rtc is
+
+process (reset)
+	begin
+	if reset' event and reset = '1' then
+		data <= std_logic_vector(to_unsigned('0',43));
+	end if;
+end process;
+	
+process (en_wr)
+	begin
+	if en_wr' event and en_wr = '1' then
+		data <= write_data;
+	end if;
+end process;
+	
+process (enable)
+	begin
+	if enable = '1' then
+		data <= data + std_logic_vector(to_unsigned('1',43));
+		wait for 1 ms;
+	endif
+end process;
+	
+end architecture;

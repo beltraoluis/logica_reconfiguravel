@@ -1,0 +1,79 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\beltr\Documents\git\logicaReconfiguravel\Projeosquartus\projeto_final\rtc\simulation\modelsim
+Ertc
+Z1 w1561942384
+Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z5 dC:\Users\beltr\Documents\git\logicaReconfiguravel\Projeosquartus\projeto_final\rtc\simulation\modelsim
+Z6 8C:/Users/beltr/Documents/git/logicaReconfiguravel/Projeosquartus/projeto_final/rtc/rtc.vhd
+Z7 FC:/Users/beltr/Documents/git/logicaReconfiguravel/Projeosquartus/projeto_final/rtc/rtc.vhd
+l0
+L11
+V;eR9X4lZH[gfK889Jf96Y2
+Z8 OV;C;10.1d;51
+32
+Z9 !s108 1561942514.543000
+Z10 !s90 -reportprogress|300|-work|work|C:/Users/beltr/Documents/git/logicaReconfiguravel/Projeosquartus/projeto_final/rtc/rtc.vhd|
+Z11 !s107 C:/Users/beltr/Documents/git/logicaReconfiguravel/Projeosquartus/projeto_final/rtc/rtc.vhd|
+Z12 o-work work -O0
+Z13 tExplicit 1
+!s100 mg?5C7a>l@HO@967n]d2d3
+!i10b 1
+Artc_behave
+R2
+R3
+R4
+DEx4 work 3 rtc 0 22 ;eR9X4lZH[gfK889Jf96Y2
+l34
+L31
+V46Zoj=nhIgMTPJ^=GCOkH1
+R8
+32
+R9
+R10
+R11
+R12
+R13
+!s100 a^VhTL@aK=imYRa>;1fYH0
+!i10b 1
+Ertc_tb
+Z14 w1561942737
+R2
+R3
+R4
+R5
+Z15 8C:/Users/beltr/Documents/git/logicaReconfiguravel/Projeosquartus/projeto_final/rtc/rtc_tb.vhd
+Z16 FC:/Users/beltr/Documents/git/logicaReconfiguravel/Projeosquartus/projeto_final/rtc/rtc_tb.vhd
+l0
+L11
+V[0Rn:<LzBhb=``jXnZ``o2
+!s100 TI:MlK6Y8RI]5N908K>Pe0
+R8
+32
+!i10b 1
+Z17 !s108 1561942747.050000
+Z18 !s90 -reportprogress|300|-work|work|C:/Users/beltr/Documents/git/logicaReconfiguravel/Projeosquartus/projeto_final/rtc/rtc_tb.vhd|
+Z19 !s107 C:/Users/beltr/Documents/git/logicaReconfiguravel/Projeosquartus/projeto_final/rtc/rtc_tb.vhd|
+R12
+R13
+Artc_behave
+R2
+R3
+R4
+Z20 DEx4 work 6 rtc_tb 0 22 [0Rn:<LzBhb=``jXnZ``o2
+l27
+L14
+VZG4F9G[mb7B=iPGFa=k;`1
+!s100 K2KJR5U_O?UdZek5R[Mb_1
+R8
+32
+!i10b 1
+R17
+R18
+R19
+R12
+R13
