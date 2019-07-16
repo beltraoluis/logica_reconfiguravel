@@ -1,5 +1,5 @@
 Analysis & Synthesis report for aula4
-Fri Apr 19 23:21:08 2019
+Tue Jul 16 20:22:27 2019
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,9 +13,11 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  8. User-Specified and Inferred Latches
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -41,16 +43,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Apr 19 23:21:08 2019           ;
+; Analysis & Synthesis Status        ; Successful - Tue Jul 16 20:22:27 2019           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; aula4                                           ;
-; Top-level Entity Name              ; aula4                                           ;
+; Top-level Entity Name              ; bit_set_check                                   ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 0                                               ;
-;     Total combinational functions  ; 0                                               ;
+; Total logic elements               ; 35                                              ;
+;     Total combinational functions  ; 35                                              ;
 ;     Dedicated logic registers      ; 0                                               ;
 ; Total registers                    ; 0                                               ;
-; Total pins                         ; 2                                               ;
+; Total pins                         ; 9                                               ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -64,7 +66,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP2C35F672C6       ;                    ;
-; Top-level entity name                                                      ; aula4              ; aula4              ;
+; Top-level entity name                                                      ; bit_set_check      ; aula4              ;
 ; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -154,42 +156,43 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                        ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                 ; Library ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------+---------+
-; aula4.vhd                        ; yes             ; User VHDL File  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/aula4/aula4.vhd ;         ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                         ; Library ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------+---------+
+; bit_set_check.vhd                ; yes             ; User VHDL File  ; C:/Users/User/Documents/logica_reconfiguravel/Projeosquartus/aula4/bit_set_check.vhd ;         ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-;                                             ;       ;
-; Total combinational functions               ; 0     ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 2     ;
-; Embedded Multiplier 9-bit elements          ; 0     ;
-; Maximum fan-out node                        ; i     ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 1     ;
-; Average fan-out                             ; 0.50  ;
-+---------------------------------------------+-------+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimated Total logic elements              ; 35     ;
+;                                             ;        ;
+; Total combinational functions               ; 35     ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 16     ;
+;     -- 3 input functions                    ; 15     ;
+;     -- <=2 input functions                  ; 4      ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 35     ;
+;     -- arithmetic mode                      ; 0      ;
+;                                             ;        ;
+; Total registers                             ; 0      ;
+;     -- Dedicated logic registers            ; 0      ;
+;     -- I/O registers                        ; 0      ;
+;                                             ;        ;
+; I/O pins                                    ; 9      ;
+; Embedded Multiplier 9-bit elements          ; 0      ;
+; Maximum fan-out node                        ; sum[0] ;
+; Maximum fan-out                             ; 10     ;
+; Total fan-out                               ; 120    ;
+; Average fan-out                             ; 2.73   ;
++---------------------------------------------+--------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -197,9 +200,25 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |aula4                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 2    ; 0            ; |aula4              ; work         ;
+; |bit_set_check             ; 35 (35)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 9    ; 0            ; |bit_set_check      ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; o0[0]$latch                                        ; o0[2]               ; yes                    ;
+; o0[1]$latch                                        ; o0[2]               ; yes                    ;
+; o0[2]$latch                                        ; o0[2]               ; yes                    ;
+; sum[0]                                             ; sum[0]              ; yes                    ;
+; sum[1]                                             ; sum[0]              ; yes                    ;
+; sum[2]                                             ; sum[0]              ; yes                    ;
+; Number of user-specified and inferred latches = 6  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
 +------------------------------------------------------+
@@ -217,6 +236,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |bit_set_check|o0[0]       ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |bit_set_check|sum[0]      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
 +-------------------------------+
 ; Elapsed Time Per Partition    ;
 +----------------+--------------+
@@ -232,12 +261,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Apr 19 23:21:05 2019
+    Info: Processing started: Tue Jul 16 20:22:24 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off aula4 -c aula4
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 2 design units, including 1 entities, in source file bit_set_check_tb.vhd
-    Info (12022): Found design unit 1: bit_set_check-test
-    Info (12023): Found entity 1: bit_set_check_tb
+Info (12021): Found 2 design units, including 1 entities, in source file counter1_tb.vhd
+    Info (12022): Found design unit 1: counter1_tb-test
+    Info (12023): Found entity 1: counter1_tb
 Info (12021): Found 2 design units, including 1 entities, in source file bit_set_check.vhd
     Info (12022): Found design unit 1: bit_set_check-behave
     Info (12023): Found entity 1: bit_set_check
@@ -247,16 +276,38 @@ Info (12021): Found 2 design units, including 1 entities, in source file counter
 Info (12021): Found 2 design units, including 1 entities, in source file aula4.vhd
     Info (12022): Found design unit 1: aula4-behave
     Info (12023): Found entity 1: aula4
-Info (12127): Elaborating entity "aula4" for the top level hierarchy
+Info (12127): Elaborating entity "bit_set_check" for the top level hierarchy
+Warning (10631): VHDL Process Statement warning at bit_set_check.vhd(17): inferring latch(es) for signal or variable "sum", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at bit_set_check.vhd(17): inferring latch(es) for signal or variable "o0", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "o0[0]" at bit_set_check.vhd(17)
+Info (10041): Inferred latch for "o0[1]" at bit_set_check.vhd(17)
+Info (10041): Inferred latch for "o0[2]" at bit_set_check.vhd(17)
+Info (10041): Inferred latch for "sum[0]" at bit_set_check.vhd(23)
+Info (10041): Inferred latch for "sum[1]" at bit_set_check.vhd(23)
+Info (10041): Inferred latch for "sum[2]" at bit_set_check.vhd(23)
+Info (10041): Inferred latch for "sum[3]" at bit_set_check.vhd(23)
+Warning (13012): Latch o0[0]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op[0]
+Warning (13012): Latch o0[1]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op[0]
+Warning (13012): Latch o0[2]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op[0]
+Warning (13012): Latch sum[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal i0[3]
+Warning (13012): Latch sum[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal i0[3]
+Warning (13012): Latch sum[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal i0[2]
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 1 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4639 megabytes
-    Info: Processing ended: Fri Apr 19 23:21:08 2019
+Info (21057): Implemented 44 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
+    Info (21059): Implemented 3 output pins
+    Info (21061): Implemented 35 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 15 warnings
+    Info: Peak virtual memory: 4638 megabytes
+    Info: Processing ended: Tue Jul 16 20:22:27 2019
     Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
 
 

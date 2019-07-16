@@ -18,8 +18,8 @@ architecture test of counter1_tb is
 	);
 	end component;
 	
-	signal clock, reset1, reset2, enable1, enable2: std_logic;
-	signal so10, so11, so12, so13, so20, so21, so22, so23, carry1, carry2: std_logic;
+	signal clock, reset1, reset2, enable1, enable2: std_logic := 'U';
+	signal so10, so11, so12, so13, so20, so21, so22, so23, carry1, carry2: std_logic := 'U';
 	begin
 		dect: counter1 port map(
 			clk => clock,

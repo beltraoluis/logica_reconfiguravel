@@ -72,7 +72,7 @@ READ    |          |  CNT /= 0    |          |  CNT = 0    |          |  CNT/=0 
                        --------------->----------->-----------
 Tarefas:
 1) Completar a primeira máquina de estados (estratégia A)
-2) Completar e corrigir a máquina de estados da estratégia BIBLIOGRAFIA
+2) Completar e corrigir a máquina de estados da estratégia
 3) Implementar ambas as soluções utilizando FIFO e BRAM como componentes
 4) Simular no Modelsim, utilizando scripts
 5) Fazer o download na placa e capturar evidências de execução com o SignalTap

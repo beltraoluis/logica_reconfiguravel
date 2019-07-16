@@ -17,12 +17,10 @@ end entity;
 
 architecture behave of counter1 is
 	signal aux1: integer range 0 to 9 := 0;
-	signal n1: std_logic_vector(3 downto 0);
+	signal n1: std_logic_vector(3 downto 0):= "0000";
 	begin
 	process(clk, en1, rst1)
 	begin
-	crr1 <= '0';
-	crr2 <= '0';
 		if rst1 = '1' then
 			aux1 <= 0;
 			crr1 <= '0';

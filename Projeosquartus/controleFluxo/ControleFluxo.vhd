@@ -15,7 +15,7 @@ entity ControleFluxo is
 		clk, rst: in std_logic
 	);
 end entity;
-
+--
 architecture behave of ControleFluxo is
 
 ---- Declaração dos componentes 
